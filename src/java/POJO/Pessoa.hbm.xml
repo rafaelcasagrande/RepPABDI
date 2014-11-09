@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/11/2014 13:16:59 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="POJO.Pessoa" table="pessoa" catalog="lojadatabase" optimistic-lock="version">
+        <id name="pessoaCodigo" type="java.lang.Integer">
+            <column name="pessoa_codigo" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="contato" class="POJO.Contato" fetch="select">
+            <column name="contato_codigo" />
+        </many-to-one>
+        <property name="pessoaCpf" type="string">
+            <column name="pessoa_cpf" length="11" />
+        </property>
+        <property name="pessoaSobrenome" type="string">
+            <column name="pessoa_sobrenome" length="50" />
+        </property>
+        <property name="pessoaDataNascimento" type="date">
+            <column name="pessoa_data_nascimento" length="10" />
+        </property>
+        <property name="pessoaNumeroLogradouro" type="string">
+            <column name="pessoa_numero_logradouro" length="10" />
+        </property>
+        <property name="pessoaNome" type="string">
+            <column name="pessoa_nome" length="50" />
+        </property>
+        <set name="clientes" table="cliente" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="pessoa_codigo" />
+            </key>
+            <one-to-many class="POJO.Cliente" />
+        </set>
+        <set name="funcionarios" table="funcionario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="pessoa_codigo" />
+            </key>
+            <one-to-many class="POJO.Funcionario" />
+        </set>
+    </class>
+</hibernate-mapping>

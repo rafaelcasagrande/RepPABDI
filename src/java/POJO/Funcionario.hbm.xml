@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/11/2014 13:16:59 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="POJO.Funcionario" table="funcionario" catalog="lojadatabase" optimistic-lock="version">
+        <id name="funcionarioCodigo" type="java.lang.Integer">
+            <column name="funcionario_codigo" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="acesso" class="POJO.Acesso" fetch="select">
+            <column name="acesso_codigo" />
+        </many-to-one>
+        <many-to-one name="cargo" class="POJO.Cargo" fetch="select">
+            <column name="cargo_codigo" />
+        </many-to-one>
+        <many-to-one name="pessoa" class="POJO.Pessoa" fetch="select">
+            <column name="pessoa_codigo" />
+        </many-to-one>
+        <many-to-one name="unidade" class="POJO.Unidade" fetch="select">
+            <column name="unidade_codigo" />
+        </many-to-one>
+        <property name="funcionarioDataAdmissao" type="date">
+            <column name="funcionario_data_admissao" length="10" />
+        </property>
+        <property name="funcionarioDataCadastro" type="date">
+            <column name="funcionario_data_cadastro" length="10" />
+        </property>
+        <set name="vendas" table="venda" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="funcionario_codigo" />
+            </key>
+            <one-to-many class="POJO.Venda" />
+        </set>
+    </class>
+</hibernate-mapping>

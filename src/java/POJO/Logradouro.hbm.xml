@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/11/2014 13:16:59 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="POJO.Logradouro" table="logradouro" catalog="lojadatabase" optimistic-lock="version">
+        <id name="logradouroCodigo" type="java.lang.Integer">
+            <column name="logradouro_codigo" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="bairro" class="POJO.Bairro" fetch="select">
+            <column name="bairro_codigo" />
+        </many-to-one>
+        <property name="logradouroNome" type="string">
+            <column name="logradouro_nome" length="100" />
+        </property>
+        <property name="logradouroTipo" type="string">
+            <column name="logradouro_tipo" length="50" />
+        </property>
+        <property name="logradouroCep" type="string">
+            <column name="logradouro_cep" length="8" />
+        </property>
+        <set name="fornecedors" table="fornecedor" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="logradouro_codigo" />
+            </key>
+            <one-to-many class="POJO.Fornecedor" />
+        </set>
+        <set name="unidades" table="unidade" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="logradouro_codigo" />
+            </key>
+            <one-to-many class="POJO.Unidade" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/11/2014 13:16:59 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="POJO.ProdutoVenda" table="produto_venda" catalog="lojadatabase" optimistic-lock="version">
+        <id name="produtovendaCodigo" type="java.lang.Integer">
+            <column name="produtovenda_codigo" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="produto" class="POJO.Produto" fetch="select">
+            <column name="produto_codigo" />
+        </many-to-one>
+        <many-to-one name="venda" class="POJO.Venda" fetch="select">
+            <column name="venda_codigo" />
+        </many-to-one>
+        <property name="produtovendaQuantidade" type="java.lang.Integer">
+            <column name="produtovenda_quantidade" />
+        </property>
+        <property name="produtovendaValorTotal" type="big_decimal">
+            <column name="produtovenda_valor_total" precision="7" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/11/2014 13:16:59 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="POJO.Produto" table="produto" catalog="lojadatabase" optimistic-lock="version">
+        <id name="produtoCodigo" type="java.lang.Integer">
+            <column name="produto_codigo" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="fornecedor" class="POJO.Fornecedor" fetch="select">
+            <column name="fornecedor_codigo" />
+        </many-to-one>
+        <many-to-one name="marca" class="POJO.Marca" fetch="select">
+            <column name="marca_codigo" />
+        </many-to-one>
+        <property name="produtoPreco" type="big_decimal">
+            <column name="produto_preco" precision="7" />
+        </property>
+        <property name="produtoNome" type="string">
+            <column name="produto_nome" length="50" />
+        </property>
+        <property name="produtoDescricao" type="string">
+            <column name="produto_descricao" length="200" />
+        </property>
+        <property name="produtoQuantidade" type="java.lang.Integer">
+            <column name="produto_quantidade" />
+        </property>
+        <set name="produtoVendas" table="produto_venda" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="produto_codigo" />
+            </key>
+            <one-to-many class="POJO.ProdutoVenda" />
+        </set>
+    </class>
+</hibernate-mapping>

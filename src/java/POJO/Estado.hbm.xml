@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/11/2014 13:16:59 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="POJO.Estado" table="estado" catalog="lojadatabase" optimistic-lock="version">
+        <id name="estadoCodigo" type="java.lang.Integer">
+            <column name="estado_codigo" />
+            <generator class="identity" />
+        </id>
+        <property name="estadoNome" type="string">
+            <column name="estado_nome" length="20" />
+        </property>
+        <property name="estadoSigla" type="string">
+            <column name="estado_sigla" length="2" />
+        </property>
+        <set name="cidades" table="cidade" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="estado_codigo" />
+            </key>
+            <one-to-many class="POJO.Cidade" />
+        </set>
+    </class>
+</hibernate-mapping>
