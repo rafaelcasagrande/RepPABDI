@@ -33,15 +33,7 @@ public class ServletListarMarcas extends HttpServlet {
         
         RequestDispatcher rs = request.getRequestDispatcher("ConsultaMarca.jsp");
         request.setAttribute("marcas", marcas);
-        
-        int c = 0;
-        String n = "";
-        
-        for(Marca m : marcas){
-            c = m.getMarcaCodigo();
-            n = m.getMarcaNome();
-        }
-        
+
         rs.forward(request, response); 
     }
 }

@@ -18,7 +18,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ServletCadastrarMarcas</servlet-name>
-        <url-pattern>/ServletMarca</url-pattern>
+        <url-pattern>/ServletCadastrarMarcas</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ServletListarMarcas</servlet-name>

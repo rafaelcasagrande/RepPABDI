@@ -12,11 +12,13 @@
         <title>Cadastrar Marca</title>
     </head>
     <body>
-        <form method="GET" action="ServletMarca">
+        
+        <form method="GET" action="ServletCadastrarMarcas">
             <div class="container">
                  <input class="form-control" placeholder="Marca" type="text" name="txtMarcaNome"><br>
-                 <button type="submit" class="btn btn-primary" id="Cadastrar">Cadastrar</button> 
+                 <button type="submit" class="btn btn-primary" id="btnCadastrar">Cadastrar</button> 
             </div>
         </form>
+
     </body>
 </html>

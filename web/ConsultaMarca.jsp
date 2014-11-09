@@ -12,22 +12,22 @@
     </head>
     <body>
         
-        <form action="ServletListarMarcas" method="GET">
-            <button class="btn btn-primary" type="submit" id="btnListarMarcas" value="Listar Marcas"></button>
+        <form method="GET" action="ServletListarMarcas">
+            <button class="btn btn-primary" type="submit" id="btnListarMarcas" value="Listar Marcas">Listar Marcas</button>
         </form>
  
-        <table>
+        <table class="table table-bordered">
             <th>
-                <tr> Código da Marca </tr>
-                <tr> Nome da Marca </tr>
+                <td> Código da Marca </td>
+                <td> Nome da Marca </td>
             </th>
  
         <c:forEach items="${marcas}" var="marca" varStatus="loop">
             
-            <td>
-                <tr> ${marca.getMarcaCodigo()} </tr>
-                <tr> ${marca.getMarcaNome()} </tr>
-            </td>
+            <tr>
+                <td> ${marca.getMarcaCodigo()} </td>
+                <td> ${marca.getMarcaNome()} </td>
+            </tr>
             
         </c:forEach>
 

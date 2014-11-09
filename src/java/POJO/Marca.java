@@ -18,9 +18,9 @@ public class Marca  implements java.io.Serializable {
     public Marca() {
     }
 
-    public Marca(String marcaNome, Set produtos) {
+    public Marca(String marcaNome) {
        this.marcaNome = marcaNome;
-       this.produtos = produtos;
+       //this.produtos = produtos;
     }
    
     public Integer getMarcaCodigo() {
@@ -44,10 +44,6 @@ public class Marca  implements java.io.Serializable {
     public void setProdutos(Set produtos) {
         this.produtos = produtos;
     }
-
-
-
-
 }
 
 

@@ -11,6 +11,7 @@ import UTIL.HibernateUtil;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -24,6 +25,7 @@ public class MarcaDAO {
         session.beginTransaction();
         session.save(marca);
         session.getTransaction().commit();
+        session.close();
         }
         catch(Exception ex)
         {
@@ -42,8 +44,8 @@ public class MarcaDAO {
         try
         {
             trns = session.beginTransaction();
-            marcas = session.createQuery("select marcaCodigo, marcaNome from Marca").list();
-            session.close();
+            Query query = session.createQuery("from Marca");
+            marcas = query.list();
         }
         catch(Exception ex)
         {
