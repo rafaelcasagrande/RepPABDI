@@ -12,6 +12,14 @@
         <servlet-name>ServletListarMarcas</servlet-name>
         <servlet-class>SERVLET.ServletListarMarcas</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletManipularMarca</servlet-name>
+        <servlet-class>SERVLET.ServletManipularMarca</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletConsultarMarca</servlet-name>
+        <servlet-class>SERVLET.ServletConsultarMarca</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletLogin</servlet-name>
         <url-pattern>/ServletLogin</url-pattern>
@@ -23,6 +31,14 @@
     <servlet-mapping>
         <servlet-name>ServletListarMarcas</servlet-name>
         <url-pattern>/ServletListarMarcas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletManipularMarca</servlet-name>
+        <url-pattern>/ServletManipularMarca</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletConsultarMarca</servlet-name>
+        <url-pattern>/ServletConsultarMarca</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>Login.jsp</welcome-file>

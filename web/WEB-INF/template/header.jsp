@@ -89,9 +89,9 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Marca <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="CadastroMarca.jsp">Cadastrar</a></li>
-                                <li><a href="ConsultaMarca.jsp" >Consultar</a></li>
-                              <li><a href="#">Alterar</a></li>
-                              <li><a href="#">Excluir</a></li>
+                                <li><a href="ServletListarMarcas" >Consultar</a></li>
+                                <li><a href="ServletListarMarcas">Alterar</a></li>
+                                <li><a href="ServletListarMarcas">Excluir</a></li>
                             </ul>
                           </li>
                        </ul>  

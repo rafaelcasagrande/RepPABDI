@@ -14,11 +14,9 @@
     <body>
         
         <form method="GET" action="ServletCadastrarMarcas">
-            <div class="container">
-                 <input class="form-control" placeholder="Marca" type="text" name="txtMarcaNome"><br>
-                 <button type="submit" class="btn btn-primary" id="btnCadastrar">Cadastrar</button> 
-            </div>
+            <input class="form-control" placeholder="Marca" type="text" name="txtMarcaNome"><br>
+            <button type="submit" class="btn btn-primary" id="btnCadastrar">Cadastrar</button> 
         </form>
-
+       
     </body>
 </html>

@@ -19,18 +19,22 @@ public class MarcaDAO {
 
     public boolean adicionarMarca(Marca marca)
     {
+        Session session = HibernateUtil.getSessionFactory().openSession();
         try
         {
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
-        session.save(marca);
-        session.getTransaction().commit();
-        session.close();
+            session.beginTransaction();
+            session.save(marca);
+            session.getTransaction().commit();
         }
         catch(Exception ex)
         {
             System.out.println(ex.getMessage());
             return false;
+        }
+        finally
+        {
+            session.flush();
+            session.close();
         }
         return true;
     }
@@ -40,7 +44,7 @@ public class MarcaDAO {
         List<Marca> marcas = new LinkedList<Marca>();
         Transaction trns = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
-        
+
         try
         {
             trns = session.beginTransaction();
@@ -59,4 +63,86 @@ public class MarcaDAO {
         }
         return marcas;
     }
+    
+    public int alterarMarca(Marca marca)
+    {
+        Transaction trns = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        int result = 0;
+        try
+        {
+            trns = session.beginTransaction();
+            Query query = session.createQuery("update Marca set marcaNome = :nome_marca where marcaCodigo = :codigo_marca");
+            query.setParameter("codigo_marca", marca.getMarcaCodigo());
+            query.setParameter("nome_marca", marca.getMarcaNome());
+            result = query.executeUpdate();
+            session.getTransaction().commit();
+        }
+        catch(Exception ex)
+        {
+            System.out.println(ex.getMessage());
+            return result;
+        }
+        finally
+        {
+            session.flush();
+            session.close();
+        }
+        return result;
+    }
+    
+    
+    public boolean exluirMarca(int codigoMarca)
+    {
+        Transaction trns = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        
+        Marca marca = new Marca();
+        marca.setMarcaCodigo(codigoMarca);
+        
+        try
+        {
+            trns = session.beginTransaction();
+            session.delete(marca);
+            session.getTransaction().commit();
+        }
+        catch(Exception ex)
+        {
+            System.out.println(ex.getMessage());
+            return false;
+        }
+        finally
+        {
+            session.flush();
+            session.close();
+        }
+        return true;
+    }
+    
+    public List<Marca> consultarMarca(String nomeMarca)
+    {
+        List<Marca> marcas = new LinkedList<Marca>();
+        Transaction trns = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        try
+        {
+            trns = session.beginTransaction();
+            Query query = session.createQuery("from Marca Where marcaNome like :nome_marca");
+            query.setParameter("nome_marca", nomeMarca + "%");
+            marcas = query.list();
+        }
+        catch(Exception ex)
+        {
+            System.out.println(ex.getMessage());
+            return null;
+        }
+        finally
+        {
+            session.flush();
+            session.close();
+        }
+        return marcas;
+    }
+    
 }

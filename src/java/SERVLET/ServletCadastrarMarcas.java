@@ -6,6 +6,7 @@ import POJO.Marca;
 import DAO.MarcaDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -28,14 +29,10 @@ public class ServletCadastrarMarcas extends HttpServlet {
         MarcaDAO marcaDao = new MarcaDAO();
         
         resultado = marcaDao.adicionarMarca(marca);
+
+        RequestDispatcher rs = request.getRequestDispatcher("CadastroMarca.jsp");
+
+        rs.forward(request, response);
         
-        if(resultado)
-        {
-            System.out.println("Cadastro realizado com sucesso");
-        }
-        else
-        {
-            System.out.println("Falha em realizar o cadastro");
-        }
     }
 }
