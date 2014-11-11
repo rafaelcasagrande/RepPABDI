@@ -1,16 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package SERVLET;
 
-import POJO.Marca;
-import DAO.MarcaDAO;
+import DAO.CargoDAO;
+import POJO.Cargo;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -19,21 +13,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class ServletListarMarcas extends HttpServlet {
+
+public class ServletListarCargo extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        List<Marca> marcas = new LinkedList<Marca>();
+         List<Cargo> cargos = new LinkedList<Cargo>();
         
-        MarcaDAO marcaDao = new MarcaDAO();
+        CargoDAO cargoDao = new CargoDAO();
         
-        marcas = marcaDao.listarMarca();
+        cargos = cargoDao.listarCargo();
         
-        RequestDispatcher rs = request.getRequestDispatcher("ConsultaMarca.jsp");
-        request.setAttribute("marcas", marcas);
+        RequestDispatcher rs = request.getRequestDispatcher("ConsultaCargo.jsp");
+        request.setAttribute("cargos", cargos);
 
         rs.forward(request, response); 
+
     }
 }

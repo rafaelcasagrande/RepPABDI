@@ -18,9 +18,9 @@ public class Marca  implements java.io.Serializable {
     public Marca() {
     }
 
-    public Marca(String marcaNome) {
+    public Marca(String marcaNome, Set produtos) {
        this.marcaNome = marcaNome;
-       //this.produtos = produtos;
+       this.produtos = produtos;
     }
    
     public Integer getMarcaCodigo() {

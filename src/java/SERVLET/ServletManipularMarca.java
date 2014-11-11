@@ -43,7 +43,7 @@ public class ServletManipularMarca extends HttpServlet {
             
             resultadoE = marcaDao.exluirMarca(codigoMarcaI);
 
-            RequestDispatcher rs = request.getRequestDispatcher("ServletListarMarcas");
+            RequestDispatcher rs = request.getRequestDispatcher("ServletListarMarca");
 
             rs.forward(request, response);
         }
@@ -61,7 +61,7 @@ public class ServletManipularMarca extends HttpServlet {
    
             resultadoA = marcaDao.alterarMarca(marca);
             
-            RequestDispatcher rs = request.getRequestDispatcher("ServletListarMarcas");
+            RequestDispatcher rs = request.getRequestDispatcher("ServletListarMarca");
 
             rs.forward(request, response);
         }      

@@ -14,11 +14,13 @@
     <body>
         <div class="container">  
             
-            <form role="form">
+            <form role="form" action="ServletCadastrarCargo">
             
                 <input type="text" class="form-control" placeholder="Salário" name="txtCargoSalario"><br>
                 <input type="text" class="form-control" placeholder="Cargo" name="txtCargoNome"><br>
             
+                <button type="submit" class="btn btn-primary" id="btnCadastrar">Cadastrar</button>
+                
             </form>
             
         </div>

@@ -31,9 +31,9 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cargo <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="CadastroCargo.jsp">Cadastrar</a></li>
-                              <li><a href="#">Consultar</a></li>
-                              <li><a href="#">Alterar</a></li>
-                              <li><a href="#">Excluir</a></li>
+                              <li><a href="ServletListarCargo">Consultar</a></li>
+                              <li><a href="ServletListarCargo">Alterar</a></li>
+                              <li><a href="ServletListarCargo">Excluir</a></li>
                             </ul>
                           </li>
                        </ul> 
@@ -89,9 +89,9 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Marca <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="CadastroMarca.jsp">Cadastrar</a></li>
-                                <li><a href="ServletListarMarcas" >Consultar</a></li>
-                                <li><a href="ServletListarMarcas">Alterar</a></li>
-                                <li><a href="ServletListarMarcas">Excluir</a></li>
+                                <li><a href="ServletListarMarca" >Consultar</a></li>
+                                <li><a href="ServletListarMarca">Alterar</a></li>
+                                <li><a href="ServletListarMarca">Excluir</a></li>
                             </ul>
                           </li>
                        </ul>  

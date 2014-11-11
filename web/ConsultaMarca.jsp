@@ -12,7 +12,7 @@
     </head>
     <body>
         
-        <form method="GET" action="ServletListarMarcas">
+        <form method="GET" action="ServletListarMarca">
             <button class="btn btn-primary" type="submit" id="btnListarMarcas" value="Atualizar">Atualizar</button>
         </form>
         
@@ -37,12 +37,11 @@
             </c:forEach>
         </table>
 
-        <form>
-            <input disabled="true" class="form-control" placeholder="Codigo" type="text" id="txtCodigoAlterar" name="txtCodigoAlterar">
-            <input class="form-control" placeholder="Marca" type="text" id="txtMarcaNomeAlterar" name="txtMarcaNomeAlterar"><br>
-            <button type="submit" class="btn btn-primary" onclick="alterarMarca()" id="btnAlterarMarca">Alterar</button> 
-        </form>
- 
+
+        <input disabled="true" class="form-control" placeholder="Codigo" type="text" id="txtCodigoAlterar" name="txtCodigoAlterar">
+        <input class="form-control" placeholder="Marca" type="text" id="txtMarcaNomeAlterar" name="txtMarcaNomeAlterar"><br>
+        <button type="submit" class="btn btn-primary" onclick="alterarMarca()" id="btnAlterarMarca">Alterar</button> 
+            
         <script>
             function excluirMarca(ParametroCodigoMarca, ParametroNomeMarca)
             {
@@ -60,7 +59,10 @@
                 
                 alert(codigoMarca + nomeMarca + 'alterar');
                 
-                $.get('ServletManipularMarca',{codigoMarca:codigoMarca, nomeMarca:nomeMarca, acao:'alterar'});   
+                $.get('ServletManipularMarca',{codigoMarca:codigoMarca, nomeMarca:nomeMarca, acao:'alterar'}, function() {
+                    window.location.reload(true);
+                });  
+                
             }
             
             function preencherCamposMarca(ParametroCodigoMarca, ParametroNomeMarca)

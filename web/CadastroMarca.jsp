@@ -13,7 +13,7 @@
     </head>
     <body>
         
-        <form method="GET" action="ServletCadastrarMarcas">
+        <form method="GET" action="ServletCadastrarMarca">
             <input class="form-control" placeholder="Marca" type="text" name="txtMarcaNome"><br>
             <button type="submit" class="btn btn-primary" id="btnCadastrar">Cadastrar</button> 
         </form>
