@@ -100,10 +100,10 @@
                           <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Produto <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="CadastroProduto.jsp">Cadastrar</a></li>
-                              <li><a href="#">Consultar</a></li>
-                              <li><a href="#">Alterar</a></li>
-                              <li><a href="#">Excluir</a></li>
+                                <li><a href="ServletIniciarCadastrarProduto">Cadastrar</a></li>
+                              <li><a href="ServletListarProduto">Consultar</a></li>
+                              <li><a href="ServletListarProduto">Alterar</a></li>
+                              <li><a href="ServletListarProduto">Excluir</a></li>
                             </ul>
                           </li>
                        </ul>  

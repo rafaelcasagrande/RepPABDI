@@ -5,8 +5,10 @@
  */
 package SERVLET;
 
-import DAO.CargoDAO;
-import POJO.Cargo;
+import DAO.MarcaDAO;
+import DAO.ProdutoDAO;
+import POJO.Marca;
+import POJO.Produto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.LinkedList;
@@ -17,31 +19,32 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author rafael
- */
-public class ServletConsultarCargo extends HttpServlet {
+
+public class ServletConsultarProduto extends HttpServlet {
 
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        List<Produto> produtos = new LinkedList<Produto>();
+        List<Marca> marcas = new LinkedList<Marca>();
         
-        List<Cargo> cargos = new LinkedList<Cargo>();
+        ProdutoDAO produtoDao = new ProdutoDAO();
+        MarcaDAO marcaDao = new MarcaDAO();
         
-        CargoDAO cargoDao = new CargoDAO();
+        String nomeProduto = "txtProdutoNome";
         
-        String nomeCargo = "txtCargoNome";
+        nomeProduto = request.getParameter(nomeProduto);
         
-        nomeCargo = request.getParameter(nomeCargo);
+        marcas = marcaDao.listarMarca();
+        produtos = produtoDao.consultarProduto(nomeProduto);
         
-        cargos = cargoDao.consultarCargo(nomeCargo);
-        
-        RequestDispatcher rs = request.getRequestDispatcher("ConsultaCargo.jsp");
-        
-        request.setAttribute("cargos", cargos);
+        RequestDispatcher rs = request.getRequestDispatcher("ConsultaProduto.jsp");
+        request.setAttribute("produtos", produtos);
+        request.setAttribute("marcas", marcas);
 
         rs.forward(request, response); 
+        
     }
 }

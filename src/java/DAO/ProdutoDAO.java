@@ -1,8 +1,8 @@
 
 package DAO;
 
-import POJO.Cargo;
 import POJO.Marca;
+import POJO.Produto;
 import UTIL.HibernateUtil;
 import java.util.LinkedList;
 import java.util.List;
@@ -10,16 +10,15 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-
-public class CargoDAO {
+public class ProdutoDAO {
     
-    public boolean adicionarCargo(Cargo cargo)
+    public boolean adicionarProduto(Produto produto)
     {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try
         {
             session.beginTransaction();
-            session.save(cargo);
+            session.save(produto);
             session.getTransaction().commit();
         }
         catch(Exception ex)
@@ -35,17 +34,17 @@ public class CargoDAO {
         return true;
     }
     
-    public List<Cargo> listarCargo()
+    public List<Produto> listarProduto()
     {
-        List<Cargo> marcas = new LinkedList<Cargo>();
+        List<Produto> produtos = new LinkedList<Produto>();
         Transaction trns = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
 
         try
         {
             trns = session.beginTransaction();
-            Query query = session.createQuery("from Cargo");
-            marcas = query.list();
+            Query query = session.createQuery("from Produto");
+            produtos = query.list();
         }
         catch(Exception ex)
         {
@@ -54,24 +53,24 @@ public class CargoDAO {
         }
         finally
         {
-            session.flush();
-            session.close();
+            //session.flush();
+            //session.close();
         }
-        return marcas;
+        return produtos;
     }
     
-    public List<Cargo> consultarCargo(String nomeCargo)
+     public List<Produto> consultarProduto(String nomeProduto)
     {
-        List<Cargo> cargos = new LinkedList<Cargo>();
+        List<Produto> produtos = new LinkedList<Produto>();
         Transaction trns = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
 
         try
         {
             trns = session.beginTransaction();
-            Query query = session.createQuery("from Cargo Where cargoNome like :nome_cargo");
-            query.setParameter("nome_cargo", nomeCargo + "%");
-            cargos = query.list();
+            Query query = session.createQuery("from Produto Where produtoNome like :nome_produto");
+            query.setParameter("nome_produto", nomeProduto + "%");
+            produtos = query.list();
         }
         catch(Exception ex)
         {
@@ -80,24 +79,24 @@ public class CargoDAO {
         }
         finally
         {
-            session.flush();
-            session.close();
+            //session.flush();
+            //session.close();
         }
-        return cargos;
+        return produtos;
     }
-    
-    public boolean exluirCargo(int codigoCargo)
+     
+     public boolean exluirProduto(int codigoProduto)
     {
         Transaction trns = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         
-        Cargo cargo = new Cargo();
-        cargo.setCargoCodigo(codigoCargo);
+        Produto produto = new Produto();
+        produto.setProdutoCodigo(codigoProduto);
         
         try
         {
             trns = session.beginTransaction();
-            session.delete(cargo);
+            session.delete(produto);
             session.getTransaction().commit();
         }
         catch(Exception ex)
@@ -113,8 +112,7 @@ public class CargoDAO {
         return true;
     }
     
-    
-    public int alterarCargo(Cargo cargo)
+     public int alterarProduto(Produto produto)
     {
         Transaction trns = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -122,10 +120,14 @@ public class CargoDAO {
         try
         {
             trns = session.beginTransaction();
-            Query query = session.createQuery("update Cargo set cargoNome = :nome_cargo, cargoSalario = :salario_cargo where cargoCodigo = :codigo_cargo");
-            query.setParameter("codigo_cargo", cargo.getCargoCodigo());
-            query.setParameter("nome_cargo", cargo.getCargoNome());
-            query.setParameter("salario_cargo", cargo.getCargoSalario());
+            Query query = session.createQuery("update Produto set produtoPreco = :preco_produto, produtoNome = :nome_produto, produtoDescricao = :descricao_produto, produtoQuantidade = :quantidade_produto, marca = :marca_produto where produtoCodigo = :codigo_produto");
+            query.setParameter("preco_produto", produto.getProdutoPreco());
+            query.setParameter("nome_produto", produto.getProdutoNome());
+            query.setParameter("descricao_produto", produto.getProdutoDescricao());
+            query.setParameter("quantidade_produto", produto.getProdutoQuantidade());
+            query.setParameter("nome_produto", produto.getProdutoNome());
+            query.setParameter("marca_produto", produto.getMarca());
+            query.setParameter("codigo_produto", produto.getProdutoCodigo());
             result = query.executeUpdate();
             session.getTransaction().commit();
         }
@@ -141,6 +143,5 @@ public class CargoDAO {
         }
         return result;
     }
-    
-    
+     
 }

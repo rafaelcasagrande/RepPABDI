@@ -11,7 +11,7 @@
         <property name="marcaNome" type="string">
             <column name="marca_nome" length="50" />
         </property>
-        <set name="produtos" table="produto" inverse="true" lazy="true" fetch="select">
+        <set name="produtos" table="produto" inverse="true" lazy="true" fetch="join">
             <key>
                 <column name="marca_codigo" />
             </key>

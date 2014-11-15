@@ -36,6 +36,26 @@
         <servlet-name>ServletManipularCargo</servlet-name>
         <servlet-class>SERVLET.ServletManipularCargo</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletIniciarCadastrarProduto</servlet-name>
+        <servlet-class>SERVLET.ServletIniciarCadastrarProduto</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletCadastrarProduto</servlet-name>
+        <servlet-class>SERVLET.ServletCadastrarProduto</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletListarProduto</servlet-name>
+        <servlet-class>SERVLET.ServletListarProduto</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletConsultarProduto</servlet-name>
+        <servlet-class>SERVLET.ServletConsultarProduto</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletManipularProduto</servlet-name>
+        <servlet-class>SERVLET.ServletManipularProduto</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletLogin</servlet-name>
         <url-pattern>/ServletLogin</url-pattern>
@@ -71,6 +91,26 @@
     <servlet-mapping>
         <servlet-name>ServletManipularCargo</servlet-name>
         <url-pattern>/ServletManipularCargo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletIniciarCadastrarProduto</servlet-name>
+        <url-pattern>/ServletIniciarCadastrarProduto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletCadastrarProduto</servlet-name>
+        <url-pattern>/ServletCadastrarProduto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletListarProduto</servlet-name>
+        <url-pattern>/ServletListarProduto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletConsultarProduto</servlet-name>
+        <url-pattern>/ServletConsultarProduto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletManipularProduto</servlet-name>
+        <url-pattern>/ServletManipularProduto</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>Login.jsp</welcome-file>

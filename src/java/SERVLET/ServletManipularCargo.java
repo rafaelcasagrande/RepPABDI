@@ -7,8 +7,10 @@ package SERVLET;
 
 import DAO.CargoDAO;
 import DAO.MarcaDAO;
+import POJO.Cargo;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -42,11 +44,30 @@ public class ServletManipularCargo extends HttpServlet {
             boolean resultadoE = false;
             
             resultadoE = cargoDao.exluirCargo(codigoCargoI);
-
-            RequestDispatcher rs = request.getRequestDispatcher("ServletListarCargo");
-
-            rs.forward(request, response);
+        }
+        else if(acao.equals("alterar"))
+        {
+            int resultado = 0;
+            
+            String nomeCargo = "";
+            
+            BigDecimal salarioCargo = null;
+            
+            Cargo cargo = new Cargo();
+            
+            nomeCargo = request.getParameter("nomeCargo");
+            
+            salarioCargo = BigDecimal.valueOf(Double.parseDouble(request.getParameter("salarioCargo").replace(',', '.')));
+            
+            cargo.setCargoCodigo(codigoCargoI);
+            cargo.setCargoNome(nomeCargo);
+            cargo.setCargoSalario(salarioCargo);
+            
+            resultado = cargoDao.alterarCargo(cargo);
         }
         
+        RequestDispatcher rd = request.getRequestDispatcher("ServletListarCargo");
+            
+        rd.forward(request, response);
     }
 }
