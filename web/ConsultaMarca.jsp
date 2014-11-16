@@ -59,7 +59,7 @@
                 
                 alert(codigoMarca + nomeMarca + 'alterar');
                 
-                $.get('ServletManipularMarca',{codigoMarca:codigoMarca, nomeMarca:nomeMarca, acao:'alterar'}, function() {
+                $.get('ServletListarMarca',{codigoMarca:codigoMarca, nomeMarca:nomeMarca, acao:'alterar'}, function() {
                     window.location.reload(true);
                 });  
                 

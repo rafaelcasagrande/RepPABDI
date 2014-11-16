@@ -56,6 +56,26 @@
         <servlet-name>ServletManipularProduto</servlet-name>
         <servlet-class>SERVLET.ServletManipularProduto</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletCadastrarFornecedor</servlet-name>
+        <servlet-class>SERVLET.ServletCadastrarFornecedor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletListarEndereco</servlet-name>
+        <servlet-class>SERVLET.ServletListarEndereco</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletListarFornecedor</servlet-name>
+        <servlet-class>SERVLET.ServletListarFornecedor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletConsultarFornecedor</servlet-name>
+        <servlet-class>SERVLET.ServletConsultarFornecedor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletManipularFornecedor</servlet-name>
+        <servlet-class>SERVLET.ServletManipularFornecedor</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletLogin</servlet-name>
         <url-pattern>/ServletLogin</url-pattern>
@@ -111,6 +131,26 @@
     <servlet-mapping>
         <servlet-name>ServletManipularProduto</servlet-name>
         <url-pattern>/ServletManipularProduto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletCadastrarFornecedor</servlet-name>
+        <url-pattern>/ServletCadastrarFornecedor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletListarEndereco</servlet-name>
+        <url-pattern>/ServletListarEndereco</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletListarFornecedor</servlet-name>
+        <url-pattern>/ServletListarFornecedor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletConsultarFornecedor</servlet-name>
+        <url-pattern>/ServletConsultarFornecedor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletManipularFornecedor</servlet-name>
+        <url-pattern>/ServletManipularFornecedor</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>Login.jsp</welcome-file>

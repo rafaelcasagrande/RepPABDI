@@ -1,10 +1,9 @@
-<%-- 
-    Document   : CadastroFornecedor
-    Created on : 24/08/2014, 17:53:10
-    Author     : rafael
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,27 +11,48 @@
         <title>Cadastrar Fornecedor</title>
     </head>
     <body>
+        
         <div class="container">
-        
-             <form role="form">
-
-                <input class="form-control" placeholder="Nome do Fornecedor" type="text" name="txtFornecedorNome"><br>
-                <input class="form-control" placeholder="CNPJ" type="text" name="txtFornecedorCnpj"><br>
-                <input class="form-control" placeholder="Telefone" type="text" name="txtFornecedorTelefone"><br>
-                <input class="form-control" placeholder="Outro Telefone" type="text" name="txtFornecedorTelefoneAlternativo"><br>
-                <input class="form-control" placeholder="Celular" type="text" name="txtFornecedorCelular"><br>
-                <input class="form-control" placeholder="E-mail" type="text" name="txtFornecedorEmail"><br>
-                <input class="form-control" placeholder="Logradouro" type="text" name="txtFornecedorLogradoutoNome"><br>
-                <input class="form-control" placeholder="Número" type="text" name="txtFornecedorNumeroLogradouro"><br>
-                <input class="form-control" placeholder="Tipo" type="text" name="txtFornecedorLogradouroTipo"><br>
-                <input class="form-control" placeholder="CEP" type="text" name="txtFornecedorLogradouroCep"><br>
-                <input class="form-control" placeholder="Bairro" type="text" name="txtFornecedorBairroNome"><br>
-                <input class="form-control" placeholder="Cidade" type="text" name="txtFornecedorCidadeNome"><br>
-                <input class="form-control" placeholder="Estado" type="text" name="txtFornecedorEstadoNome"><br>
-
-
+            <form method="GET" action="ServletListarEndereco">
+                <input class="form-control" placeholder="Nome do Fornecedor" type="text" value="${fornecedor.getFornecedorNome()}" id="txtFornecedorNome" name="txtFornecedorNome"><br>
+                <input class="form-control" placeholder="CNPJ" type="text" value="${fornecedor.getFornecedorCnpj()}" id="txtFornecedorCnpj" name="txtFornecedorCnpj"><br>
+                <input class="form-control" placeholder="Telefone" type="text" value="${fornecedor.getContato().getContatoTelefone()}" id="txtFornecedorTelefone" name="txtFornecedorTelefone"><br>
+                <input class="form-control" placeholder="Outro Telefone" type="text" value="${fornecedor.getContato().getContatoTelefoneAlternativo()}" id="txtFornecedorTelefoneAlternativo" name="txtFornecedorTelefoneAlternativo"><br>
+                <input class="form-control" placeholder="Celular" type="text" value="${fornecedor.getContato().getContatoCelular()}" id="txtFornecedorCelular" name="txtFornecedorCelular"><br>
+                <input class="form-control" placeholder="E-mail" type="text" value="${fornecedor.getContato().getContatoEmail()}" id="txtFornecedorEmail" name="txtFornecedorEmail"><br>
+                <input class="form-control" placeholder="Número" type="text" value="${fornecedor.getFornecedorNumeroLogradouro()}" id="txtFornecedorNumeroLogradouro" name="txtFornecedorNumeroLogradouro"><br>
+                <input class="form-control" placeholder="CEP" type="text" value="${logradouro.getLogradouroCep()}" id="txtFornecedorLogradouroCep" name="txtFornecedorLogradouroCep">
+                <button type="submit" class="btn btn-primary" id="btnValidar">Validar Cep</button><br>
+                <input class="form-control" disabled="true" placeholder="Logradouro" type="text" value="${logradouro.getLogradouroNome()}" name="txtFornecedorLogradoutoNome"><br>
+                <input class="form-control" disabled="true" placeholder="Bairro" type="text" value="${logradouro.getBairro().getBairroNome()}" name="txtFornecedorBairroNome"><br>
+                <input class="form-control" disabled="true" placeholder="Cidade" type="text" value="${logradouro.getBairro().getCidade().getCidadeNome()}" name="txtFornecedorCidadeNome"><br>
+                <input class="form-control" disabled="true" placeholder="Estado" type="text" value="${logradouro.getBairro().getCidade().getEstado().getEstadoNome()}"  name="txtFornecedorEstadoNome"><br>
+                <input hidden="true" type="text" value="${logradouro.getLogradouroCodigo()}" id="codigoLogradouro">
+                <input hidden="true" type="text" value="CadastroFornecedor.jsp" name="pagina">
             </form>
-        
-        </div>    
+            <button onclick="cadastrarFornecedor()" class="btn btn-primary" id="btnCadastrar">Cadastrar</button>
+        </div>   
+            
+            <script>
+                function cadastrarFornecedor()
+                {
+                    var nomeFornecedor = document.getElementById("txtFornecedorNome").value;
+                    var cnpjFornecedor = document.getElementById("txtFornecedorCnpj").value;
+                    var telefoneFornecedor = document.getElementById("txtFornecedorTelefone").value;
+                    var telefoneAltFornecedor = document.getElementById("txtFornecedorTelefoneAlternativo").value;
+                    var celularFornecedor = document.getElementById("txtFornecedorCelular").value;
+                    var emailFornecedor = document.getElementById("txtFornecedorEmail").value;
+                    var numeroFornecedor = document.getElementById("txtFornecedorNumeroLogradouro").value;
+                    var codigoLogradouro = document.getElementById("codigoLogradouro").value;
+                    
+                    $.get('ServletCadastrarFornecedor',{nomeFornecedor:nomeFornecedor, cnpjFornecedor:cnpjFornecedor, telefoneFornecedor:telefoneFornecedor, telefoneAltFornecedor:telefoneAltFornecedor, celularFornecedor:celularFornecedor, emailFornecedor:emailFornecedor, numeroFornecedor:numeroFornecedor, codigoLogradouro:codigoLogradouro},function(){
+   
+                        window.location.reload(true); 
+                    });
+                    
+                }
+            </script>
+            
+            
     </body>
 </html>

@@ -65,9 +65,9 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Fornecedor <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="CadastroFornecedor.jsp">Cadastrar</a></li>
-                              <li><a href="#">Consultar</a></li>
-                              <li><a href="#">Alterar</a></li>
-                              <li><a href="#">Excluir</a></li>
+                              <li><a href="ServletListarFornecedor">Consultar</a></li>
+                              <li><a href="ServletListarFornecedor">Alterar</a></li>
+                              <li><a href="ServletListarFornecedor">Excluir</a></li>
                             </ul>
                           </li>
                        </ul>  
