@@ -120,7 +120,7 @@ public class ProdutoDAO {
         try
         {
             trns = session.beginTransaction();
-            Query query = session.createQuery("update Produto set produtoPreco = :preco_produto, produtoNome = :nome_produto, produtoDescricao = :descricao_produto, produtoQuantidade = :quantidade_produto, marca = :marca_produto where produtoCodigo = :codigo_produto");
+            Query query = session.createQuery("update Produto set produtoPreco = :preco_produto, produtoNome = :nome_produto, produtoDescricao = :descricao_produto, produtoQuantidade = :quantidade_produto, marca = :marca_produto, fornecedor = :fornecedor_produto where produtoCodigo = :codigo_produto");
             query.setParameter("preco_produto", produto.getProdutoPreco());
             query.setParameter("nome_produto", produto.getProdutoNome());
             query.setParameter("descricao_produto", produto.getProdutoDescricao());
@@ -128,6 +128,7 @@ public class ProdutoDAO {
             query.setParameter("nome_produto", produto.getProdutoNome());
             query.setParameter("marca_produto", produto.getMarca());
             query.setParameter("codigo_produto", produto.getProdutoCodigo());
+            query.setParameter("fornecedor_produto", produto.getFornecedor());
             result = query.executeUpdate();
             session.getTransaction().commit();
         }

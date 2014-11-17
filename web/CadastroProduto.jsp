@@ -26,6 +26,14 @@
                         <option value="${marca.getMarcaCodigo()}"> ${marca.getMarcaNome()} </option>
                     </c:forEach>
                 </select>
+                
+                <select name="cbxFornecedores" id="cbxFornecedores" >
+                    <option selected disabled> Fornecedor </option>
+                    <c:forEach items="${fornecedores}" var="fornecedor" varStatus="loop">
+                        <option value="${fornecedor.getFornecedorCodigo()}"> ${fornecedor.getFornecedorNome()} </option>
+                    </c:forEach>
+                </select>
+                
                 <button type="submit" class="btn btn-primary" id="btnCadastrar">Cadastrar</button> 
             </form>
          </div>

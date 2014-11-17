@@ -5,8 +5,10 @@
  */
 package SERVLET;
 
+import DAO.FornecedorDAO;
 import DAO.MarcaDAO;
 import DAO.ProdutoDAO;
+import POJO.Fornecedor;
 import POJO.Marca;
 import POJO.Produto;
 import java.io.IOException;
@@ -26,17 +28,20 @@ public class ServletListarProduto extends HttpServlet {
         
         List<Produto> produtos = new LinkedList<Produto>();
         List<Marca> marcas = new LinkedList<Marca>();
+        List<Fornecedor> fornecedores = new LinkedList<Fornecedor>();
         
         ProdutoDAO produtoDao = new ProdutoDAO();
         MarcaDAO marcaDao = new MarcaDAO();
+        FornecedorDAO fornecedorDao = new FornecedorDAO();
         
-        
+        fornecedores = fornecedorDao.listarFornecedor();
         marcas = marcaDao.listarMarca();
         produtos = produtoDao.listarProduto();
 
         RequestDispatcher rs = request.getRequestDispatcher("ConsultaProduto.jsp");
         request.setAttribute("produtos", produtos);
         request.setAttribute("marcas", marcas);
+        request.setAttribute("fornecedores", fornecedores);
         
         rs.forward(request, response); 
     }

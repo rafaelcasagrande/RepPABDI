@@ -29,6 +29,9 @@
                 <input class="form-control" disabled="true" placeholder="Estado" type="text" value="${logradouro.getBairro().getCidade().getEstado().getEstadoNome()}"  name="txtFornecedorEstadoNome"><br>
                 <input hidden="true" type="text" value="${logradouro.getLogradouroCodigo()}" id="codigoLogradouro">
                 <input hidden="true" type="text" value="CadastroFornecedor.jsp" name="pagina">
+                <input hidden="true" type="text" value="0" name="codigoFornecedor">
+                <input hidden="true" type="text" value="0" name="codigoContato">
+            
             </form>
             <button onclick="cadastrarFornecedor()" class="btn btn-primary" id="btnCadastrar">Cadastrar</button>
         </div>   
@@ -45,9 +48,8 @@
                     var numeroFornecedor = document.getElementById("txtFornecedorNumeroLogradouro").value;
                     var codigoLogradouro = document.getElementById("codigoLogradouro").value;
                     
-                    $.get('ServletCadastrarFornecedor',{nomeFornecedor:nomeFornecedor, cnpjFornecedor:cnpjFornecedor, telefoneFornecedor:telefoneFornecedor, telefoneAltFornecedor:telefoneAltFornecedor, celularFornecedor:celularFornecedor, emailFornecedor:emailFornecedor, numeroFornecedor:numeroFornecedor, codigoLogradouro:codigoLogradouro},function(){
-   
-                        window.location.reload(true); 
+                    $.get('ServletCadastrarFornecedor',{nomeFornecedor:nomeFornecedor, cnpjFornecedor:cnpjFornecedor, telefoneFornecedor:telefoneFornecedor, telefoneAltFornecedor:telefoneAltFornecedor, celularFornecedor:celularFornecedor, emailFornecedor:emailFornecedor, numeroFornecedor:numeroFornecedor, codigoLogradouro:codigoLogradouro}, function(){
+                        window.location.reload(true);
                     });
                     
                 }

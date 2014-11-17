@@ -1,7 +1,9 @@
 
 package SERVLET;
 
+import DAO.FornecedorDAO;
 import DAO.MarcaDAO;
+import POJO.Fornecedor;
 import POJO.Marca;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -21,12 +23,17 @@ public class ServletIniciarCadastrarProduto extends HttpServlet {
             throws ServletException, IOException {
         
         MarcaDAO marcaDao = new MarcaDAO();
+        FornecedorDAO fornecedorDao = new FornecedorDAO();
         List<Marca> marcas = new LinkedList<Marca>();
+        List<Fornecedor> fornecedores = new LinkedList<Fornecedor>();
         
         marcas = marcaDao.listarMarca();
+        fornecedores = fornecedorDao.listarFornecedor();
+        
         
         RequestDispatcher rs = request.getRequestDispatcher("CadastroProduto.jsp");
         
+        request.setAttribute("fornecedores", fornecedores);
         request.setAttribute("marcas", marcas);
         
         rs.forward(request, response);

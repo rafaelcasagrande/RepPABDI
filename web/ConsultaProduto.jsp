@@ -39,8 +39,8 @@
                     <td> ${produto.getProdutoDescricao()} </td>
                     <td> ${produto.getProdutoQuantidade()} </td>
                     <td> ${produto.getMarca().getMarcaNome()} </td>
-                    <td> teste </td>
-                    <td> <button type="submit" class="btn btn-default" onclick="preencherCampos(${produto.getProdutoCodigo()}, '${produto.getProdutoNome()}', ${produto.getProdutoPreco()}, '${produto.getProdutoDescricao()}', ${produto.getProdutoQuantidade()}, '${produto.getMarca().getMarcaCodigo()}')" id="btnAlterarProduto${produto.getProdutoCodigo()}"> <span class="glyphicon glyphicon-pencil"> </span> </button> </td>
+                    <td> ${produto.getFornecedor().getFornecedorNome()} </td>
+                    <td> <button type="submit" class="btn btn-default" onclick="preencherCampos(${produto.getProdutoCodigo()}, '${produto.getProdutoNome()}', ${produto.getProdutoPreco()}, '${produto.getProdutoDescricao()}', ${produto.getProdutoQuantidade()}, '${produto.getMarca().getMarcaCodigo()}', '${produto.getFornecedor().getFornecedorCodigo()}' )" id="btnAlterarProduto${produto.getProdutoCodigo()}"> <span class="glyphicon glyphicon-pencil"> </span> </button> </td>
                     <td> <button type="submit" class="btn btn-default" onclick="excluirProduto(${produto.getProdutoCodigo()}, '${produto.getProdutoNome()}')" id="btnExcluirProduto${produto.getProdutoCodigo()}"> <span class="glyphicon glyphicon-remove"> </span></button> </td>
                 </tr>
             </c:forEach>
@@ -58,6 +58,13 @@
                         <option value="${marca.getMarcaCodigo()}"> ${marca.getMarcaNome()} </option>
                     </c:forEach>
                 </select>
+                
+                <select name="cbxFornecedores" id="cbxFornecedores" >
+                    <c:forEach items="${fornecedores}" var="fornecedor" varStatus="loop">
+                        <option value="${fornecedor.getFornecedorCodigo()}"> ${fornecedor.getFornecedorNome()} </option>
+                    </c:forEach>
+                </select>
+                
                 <button type="submit" onclick="alterarProduto()" class="btn btn-primary" id="btnAlterar">Alterar</button> 
             </form>
         
@@ -71,8 +78,9 @@
             var produtoNome = document.getElementById("txtProdutoNome").value;
             var produtoPreco = document.getElementById("txtProdutoPreco").value;
             var marcaCodigo = document.getElementById("cbxMarcas").value;
+            var fornecedorCodigo = document.getElementById("cbxFornecedores").value;
             
-            $.get('ServletManipularProduto', {codigoProduto:produtoCodigo, quantidadeProduto:produtoQuantidade, descricaoProduto:produtoDescricao, nomeProduto:produtoNome, precoProduto:produtoPreco, codigoMarca:marcaCodigo, acao:'alterar'}, function() {
+            $.get('ServletManipularProduto', {codigoProduto:produtoCodigo, quantidadeProduto:produtoQuantidade, descricaoProduto:produtoDescricao, nomeProduto:produtoNome, precoProduto:produtoPreco, codigoMarca:marcaCodigo, codigoFornecedor:fornecedorCodigo, acao:'alterar'}, function() {
                     window.location.reload(true);
                 }); 
         }
@@ -85,14 +93,15 @@
             }); 
         }
         
-        function preencherCampos(paramProdutoCodigo, paramProdutoNome, paramProdutoPreco, paramProdutoDescricao, paramProdutoQuantidade, paramMarcaCodigo)
+        function preencherCampos(paramProdutoCodigo, paramProdutoNome, paramProdutoPreco, paramProdutoDescricao, paramProdutoQuantidade, paramMarcaCodigo, paramFornecedorCodigo)
         {
             document.getElementById("txtProdutoCodigo").value = paramProdutoCodigo;
             document.getElementById("txtProdutoQuantidade").value = paramProdutoQuantidade;
             document.getElementById("txtProdutoDescricao").value = paramProdutoDescricao;
             document.getElementById("txtProdutoNome").value = paramProdutoNome;
             document.getElementById("txtProdutoPreco").value = paramProdutoPreco;
-            $("#cbxMarcas").val(paramMarcaCodigo)
+            $("#cbxMarcas").val(paramMarcaCodigo);
+            $("#cbxFornecedores").val(paramFornecedorCodigo);
         }
         
         

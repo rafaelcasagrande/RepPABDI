@@ -2,6 +2,7 @@
 package SERVLET;
 
 import DAO.ProdutoDAO;
+import POJO.Fornecedor;
 import POJO.Marca;
 import POJO.Produto;
 import java.io.IOException;
@@ -23,24 +24,26 @@ public class ServletCadastrarProduto extends HttpServlet {
         String nome = "";
         String precoS = "";
         String marcaS = "";
+        String fornecedorS = "";
 
         Marca marca = new Marca();
+        Fornecedor fornecedor = new Fornecedor();
         
         quantidadeProdutosS = request.getParameter("txtProdutoQuantidade");
         descricao = request.getParameter("txtProdutoDescricao");
         nome = request.getParameter("txtProdutoNome");
         precoS = request.getParameter("txtProdutoPreco");
         marcaS = request.getParameter("cbxMarcas");
+        fornecedorS = request.getParameter("cbxFornecedores");
         
         int produtoQuantidadeI = Integer.parseInt(quantidadeProdutosS);
         BigDecimal precoB = BigDecimal.valueOf(Double.parseDouble(precoS.replace(',', '.')));
         int marcaI = Integer.parseInt(marcaS);
+        int fornecedorI = Integer.parseInt(fornecedorS);
         
         marca.setMarcaCodigo(marcaI);
-        
-        //marca = (Marca)request.getAttribute("minhaMarca");
-        
-        
+        fornecedor.setFornecedorCodigo(fornecedorI);
+
         ProdutoDAO produtoDao = new ProdutoDAO();
         Produto produto = new Produto();
         produto.setProdutoDescricao(descricao);
@@ -48,13 +51,10 @@ public class ServletCadastrarProduto extends HttpServlet {
         produto.setProdutoPreco(precoB);
         produto.setProdutoQuantidade(produtoQuantidadeI);
         produto.setMarca(marca);
-        
-        
+        produto.setFornecedor(fornecedor);
+
         boolean resultado = false;
         
         resultado = produtoDao.adicionarProduto(produto);
-        
-        
-        
     }
 }

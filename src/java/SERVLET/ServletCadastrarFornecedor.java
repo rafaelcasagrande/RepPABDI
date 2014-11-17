@@ -52,6 +52,10 @@ public class ServletCadastrarFornecedor extends HttpServlet {
         
         RequestDispatcher rs = request.getRequestDispatcher("CadastroFornecedor.jsp");
         
+        Fornecedor fornecedor2 = new Fornecedor();
+        
+        request.setAttribute("fornecedor", fornecedor2);
+        
         rs.forward(request, response);
     }
 }

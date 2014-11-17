@@ -2,6 +2,7 @@
 package SERVLET;
 
 import DAO.ProdutoDAO;
+import POJO.Fornecedor;
 import POJO.Marca;
 import POJO.Produto;
 import java.io.IOException;
@@ -49,16 +50,23 @@ public class ServletManipularProduto extends HttpServlet {
             String nomeProduto = "";
             BigDecimal precoProduto = null;
             int codigoMarca = 0;
+            int codigoFornecedor = 0;
             
             quantidadeProduto = Integer.parseInt(request.getParameter("quantidadeProduto"));
             descricaoProduto = request.getParameter("descricaoProduto");
             nomeProduto = request.getParameter("nomeProduto");
             precoProduto = BigDecimal.valueOf(Double.parseDouble(request.getParameter("precoProduto").replace(',', '.')));
             codigoMarca = Integer.parseInt(request.getParameter("codigoMarca"));
+            codigoFornecedor = Integer.parseInt(request.getParameter("codigoFornecedor"));
             
+            Fornecedor fornecedor = new Fornecedor();
             Produto produto = new Produto();
             Marca marca = new Marca();
+            
+            fornecedor.setFornecedorCodigo(codigoFornecedor);
             marca.setMarcaCodigo(codigoMarca);
+            
+            produto.setFornecedor(fornecedor);
             produto.setMarca(marca);
             produto.setProdutoCodigo(codigoProduto);
             produto.setProdutoDescricao(descricaoProduto);
