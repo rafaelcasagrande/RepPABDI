@@ -123,9 +123,9 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Unidade <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="CadastroUnidade.jsp">Cadastrar</a></li>
-                              <li><a href="#">Consultar</a></li>
-                              <li><a href="#">Alterar</a></li>
-                              <li><a href="#">Excluir</a></li>
+                              <li><a href="ServletListarUnidade">Consultar</a></li>
+                              <li><a href="ServletListarUnidade">Alterar</a></li>
+                              <li><a href="ServletListarUnidade">Excluir</a></li>
                             </ul>
                           </li>
                        </ul>  
