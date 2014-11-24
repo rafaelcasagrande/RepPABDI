@@ -1,5 +1,5 @@
 package POJO;
-// Generated 09/11/2014 13:16:52 by Hibernate Tools 4.3.1
+// Generated 21/11/2014 21:22:07 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -18,17 +18,19 @@ public class Logradouro  implements java.io.Serializable {
      private String logradouroCep;
      private Set fornecedors = new HashSet(0);
      private Set unidades = new HashSet(0);
+     private Set pessoas = new HashSet(0);
 
     public Logradouro() {
     }
 
-    public Logradouro(Bairro bairro, String logradouroNome, String logradouroTipo, String logradouroCep, Set fornecedors, Set unidades) {
+    public Logradouro(Bairro bairro, String logradouroNome, String logradouroTipo, String logradouroCep, Set fornecedors, Set unidades, Set pessoas) {
        this.bairro = bairro;
        this.logradouroNome = logradouroNome;
        this.logradouroTipo = logradouroTipo;
        this.logradouroCep = logradouroCep;
        this.fornecedors = fornecedors;
        this.unidades = unidades;
+       this.pessoas = pessoas;
     }
    
     public Integer getLogradouroCodigo() {
@@ -79,6 +81,13 @@ public class Logradouro  implements java.io.Serializable {
     
     public void setUnidades(Set unidades) {
         this.unidades = unidades;
+    }
+    public Set getPessoas() {
+        return this.pessoas;
+    }
+    
+    public void setPessoas(Set pessoas) {
+        this.pessoas = pessoas;
     }
 
 

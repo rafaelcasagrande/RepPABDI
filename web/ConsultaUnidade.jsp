@@ -54,7 +54,7 @@
         </table>
         
         <div class="container">
-            <form method="GET" action="ServletListarUnidade">
+            <form method="GET" action="ServletListarEnderecoUnidade">
                 <input class="form-control" placeholder="Nome da Unidade" type="text" value="${unidade.getUnidadeNome()}" name="txtUnidadeNome" id="txtUnidadeNome"><br>
                 <input class="form-control" placeholder="Telefone" type="text" value="${unidade.getContato().getContatoTelefone()}" name="txtUnidadeContatoTelefone" id="txtUnidadeContatoTelefone"><br>
                 <input class="form-control" placeholder="Outro Telefone" type="text" value="${unidade.getContato().getContatoTelefoneAlternativo()}" name="txtUnidadeContatoTelefoneAlternativo" id="txtUnidadeContatoTelefoneAlternativo"><br>
@@ -72,7 +72,8 @@
                 <input hidden="true" type="text" value="ServletListarUnidade" name="pagina">
                 <input hidden="true" type="text" value="${unidade.getUnidadeCodigo()}" id="codigoUnidade" name="codigoUnidade">
                 <input hidden="true" type="text" value="${unidade.getContato().getContatoCodigo()}" id="codigoContato" name="codigoContato">
-                <input hidden="true" type="text" value="${unidade.getLogradouro().getLogradouroCodigo()}" id="codigoLogradouro">
+                <input hidden="true" type="text" value="${logradouro.getLogradouroCodigo()}" id="codigoLogradouro" name="codigoLogradouro">
+                
                 
             </form>
                 <button onclick="alterarUnidade()" class="btn btn-primary" id="btnAlterar">Alterar</button>
@@ -107,6 +108,7 @@
             
             function alterarUnidade()
             {
+                              
                 var codigoLogradouro = document.getElementById("codigoLogradouro").value;
                 var codigoContato = document.getElementById("codigoContato").value;
                 var codigoUnidade = document.getElementById("codigoUnidade").value;
@@ -116,6 +118,8 @@
                 var celularUnidade = document.getElementById("txtUnidadeContatoCelular").value;
                 var emailUnidade = document.getElementById("txtUnidadeContatoEmail").value;
                 var numeroUnidade = document.getElementById("txtUnidadeNumeroLogradouro").value;
+
+                
 
                  $.get('ServletManipularUnidade',{codigoContato:codigoContato, codigoLogradouro:codigoLogradouro,codigoUnidade:codigoUnidade, nomeUnidade:nomeUnidade,telefoneUnidade:telefoneUnidade,telefoneAltUnidade:telefoneAltUnidade,celularUnidade:celularUnidade,emailUnidade:emailUnidade,numeroUnidade:numeroUnidade, acao:'alterar'},function(){
                     window.location.reload(true);

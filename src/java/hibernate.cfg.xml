@@ -15,8 +15,8 @@
     <mapping resource="POJO/Produto.hbm.xml"/>
     <mapping resource="POJO/Funcionario.hbm.xml"/>
     <mapping resource="POJO/Cliente.hbm.xml"/>
-    <mapping resource="POJO/Fornecedor.hbm.xml"/>
     <mapping resource="POJO/Pessoa.hbm.xml"/>
+    <mapping resource="POJO/Fornecedor.hbm.xml"/>
     <mapping resource="POJO/Cidade.hbm.xml"/>
     <mapping resource="POJO/Acesso.hbm.xml"/>
     <mapping resource="POJO/Cargo.hbm.xml"/>

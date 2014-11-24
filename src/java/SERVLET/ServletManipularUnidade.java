@@ -28,8 +28,16 @@ public class ServletManipularUnidade extends HttpServlet {
         UnidadeDAO unidadeDao = new UnidadeDAO();
         boolean resultado = false;
         
-        int codigoUnidade = Integer.parseInt(request.getParameter("codigoUnidade"));
-        int codigoContato =  Integer.parseInt(request.getParameter("codigoContato"));      
+        String codigoUnidadeS = request.getParameter("codigoUnidade");
+        String codigoContatoS =  request.getParameter("codigoContato");      
+        String codigoLogradouroS = request.getParameter("codigoLogradouro"); 
+
+        int codigoUnidade = Integer.parseInt(codigoUnidadeS);
+        int codigoContato = Integer.parseInt(codigoContatoS);
+        int codigoLogradouro = 0;
+        
+        if(codigoLogradouroS != null)
+            codigoLogradouro = Integer.parseInt(codigoLogradouroS);
         
         String acao = request.getParameter("acao");
         
@@ -49,7 +57,7 @@ public class ServletManipularUnidade extends HttpServlet {
         {
             int res = 0;
             
-            int codigoLogradouro = Integer.parseInt(request.getParameter("codigoLogradouro"));   
+              
             String nomeUnidade = request.getParameter("nomeUnidade");
             String telefoneUnidade = request.getParameter("telefoneUnidade");
             String telefoneAltUnidade = request.getParameter("telefoneAltUnidade");

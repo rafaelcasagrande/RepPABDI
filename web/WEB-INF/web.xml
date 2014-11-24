@@ -96,6 +96,30 @@
         <servlet-name>ServletManipularUnidade</servlet-name>
         <servlet-class>SERVLET.ServletManipularUnidade</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletCadastrarPessoa</servlet-name>
+        <servlet-class>SERVLET.ServletCadastrarPessoa</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletListarEnderecoPessoa</servlet-name>
+        <servlet-class>SERVLET.ServletListarEnderecoPessoa</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletIniciarCadastroFuncionario</servlet-name>
+        <servlet-class>SERVLET.ServletIniciarCadastroFuncionario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletConsultarFuncionario</servlet-name>
+        <servlet-class>SERVLET.ServletConsultarFuncionario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletListarFuncionario</servlet-name>
+        <servlet-class>SERVLET.ServletListarFuncionario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletManipularFuncionario</servlet-name>
+        <servlet-class>SERVLET.ServletManipularFuncionario</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletLogin</servlet-name>
         <url-pattern>/ServletLogin</url-pattern>
@@ -191,6 +215,30 @@
     <servlet-mapping>
         <servlet-name>ServletManipularUnidade</servlet-name>
         <url-pattern>/ServletManipularUnidade</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletCadastrarPessoa</servlet-name>
+        <url-pattern>/ServletCadastrarPessoa</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletListarEnderecoPessoa</servlet-name>
+        <url-pattern>/ServletListarEnderecoPessoa</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletIniciarCadastroFuncionario</servlet-name>
+        <url-pattern>/ServletIniciarCadastroFuncionario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletConsultarFuncionario</servlet-name>
+        <url-pattern>/ServletConsultarFuncionario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletListarFuncionario</servlet-name>
+        <url-pattern>/ServletListarFuncionario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletManipularFuncionario</servlet-name>
+        <url-pattern>/ServletManipularFuncionario</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>Login.jsp</welcome-file>

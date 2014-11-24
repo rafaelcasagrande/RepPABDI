@@ -29,6 +29,7 @@
                 <input class="form-control" disabled="true" placeholder="Estado" type="text" value="${logradouro.getBairro().getCidade().getEstado().getEstadoNome()}"  name="txtUnidadeEstadoNome"><br>
                 <input class="form-control" placeholder="Gerente" type="text" name="txtUnidadeGerenteLocal"><br>
                 <input hidden="true" type="text" value="${logradouro.getLogradouroCodigo()}" id="codigoLogradouro">
+                <input hidden="true" type="text" value="CadastroUnidade.jsp" id="pagina" name="pagina">
              </form>
             <button onclick="cadastrarUnidade()" class="btn btn-primary" id="btnCadastrar">Cadastrar</button>
          </div>

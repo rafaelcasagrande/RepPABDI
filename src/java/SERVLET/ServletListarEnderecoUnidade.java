@@ -25,16 +25,22 @@ public class ServletListarEnderecoUnidade extends HttpServlet {
         String unidadeCelular = request.getParameter("txtUnidadeContatoCelular");
         String unidadeEmail = request.getParameter("txtUnidadeContatoEmail");
         String unidadeNumeroLogradouro = request.getParameter("txtUnidadeNumeroLogradouro");
+        String pagina = request.getParameter("pagina");
+        String codigoUnidade = request.getParameter("codigoUnidade");
+        String codigoContato = request.getParameter("codigoContato");
+
 
         Unidade unidade = new Unidade();
         unidade.setUnidadeNome(unidadeNome);
         unidade.setUnidadeNumeroLogradouro(unidadeNumeroLogradouro);
+        unidade.setUnidadeCodigo(Integer.parseInt(codigoUnidade));
         
         Contato contato = new Contato();
         contato.setContatoCelular(unidadeCelular);
         contato.setContatoEmail(unidadeEmail);
         contato.setContatoTelefone(unidadeTelefone);
         contato.setContatoTelefoneAlternativo(unidadeTelefoneAlternativo);
+        contato.setContatoCodigo(Integer.parseInt(codigoContato));
         
         unidade.setContato(contato);
         
@@ -44,10 +50,11 @@ public class ServletListarEnderecoUnidade extends HttpServlet {
         EnderecoDao enderecoDao = new EnderecoDao();
         
         Logradouro logradouro = new Logradouro();
+
         
         logradouro = enderecoDao.consultarEndereco(cep);
 
-        RequestDispatcher rd = request.getRequestDispatcher("CadastroUnidade.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher(pagina);
 
         request.setAttribute("unidade", unidade);
         request.setAttribute("logradouro", logradouro);

@@ -1,5 +1,5 @@
 package POJO;
-// Generated 09/11/2014 13:16:52 by Hibernate Tools 4.3.1
+// Generated 21/11/2014 21:22:07 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -14,6 +14,7 @@ public class Pessoa  implements java.io.Serializable {
 
      private Integer pessoaCodigo;
      private Contato contato;
+     private Logradouro logradouro;
      private String pessoaCpf;
      private String pessoaSobrenome;
      private Date pessoaDataNascimento;
@@ -25,8 +26,9 @@ public class Pessoa  implements java.io.Serializable {
     public Pessoa() {
     }
 
-    public Pessoa(Contato contato, String pessoaCpf, String pessoaSobrenome, Date pessoaDataNascimento, String pessoaNumeroLogradouro, String pessoaNome, Set clientes, Set funcionarios) {
+    public Pessoa(Contato contato, Logradouro logradouro, String pessoaCpf, String pessoaSobrenome, Date pessoaDataNascimento, String pessoaNumeroLogradouro, String pessoaNome, Set clientes, Set funcionarios) {
        this.contato = contato;
+       this.logradouro = logradouro;
        this.pessoaCpf = pessoaCpf;
        this.pessoaSobrenome = pessoaSobrenome;
        this.pessoaDataNascimento = pessoaDataNascimento;
@@ -49,6 +51,13 @@ public class Pessoa  implements java.io.Serializable {
     
     public void setContato(Contato contato) {
         this.contato = contato;
+    }
+    public Logradouro getLogradouro() {
+        return this.logradouro;
+    }
+    
+    public void setLogradouro(Logradouro logradouro) {
+        this.logradouro = logradouro;
     }
     public String getPessoaCpf() {
         return this.pessoaCpf;

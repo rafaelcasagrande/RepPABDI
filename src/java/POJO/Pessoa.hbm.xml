@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 09/11/2014 13:16:59 by Hibernate Tools 4.3.1 -->
+<!-- Generated 21/11/2014 21:22:09 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="POJO.Pessoa" table="pessoa" catalog="lojadatabase" optimistic-lock="version">
         <id name="pessoaCodigo" type="java.lang.Integer">
@@ -10,6 +10,9 @@
         </id>
         <many-to-one name="contato" class="POJO.Contato" fetch="select">
             <column name="contato_codigo" />
+        </many-to-one>
+        <many-to-one name="logradouro" class="POJO.Logradouro" fetch="select">
+            <column name="logradouro_codigo" />
         </many-to-one>
         <property name="pessoaCpf" type="string">
             <column name="pessoa_cpf" length="11" />

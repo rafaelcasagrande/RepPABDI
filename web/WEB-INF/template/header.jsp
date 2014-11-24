@@ -76,10 +76,10 @@
                           <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Funcionário <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="CadastroFuncionario.jsp">Cadastrar</a></li>
-                              <li><a href="#">Consultar</a></li>
-                              <li><a href="#">Alterar</a></li>
-                              <li><a href="#">Excluir</a></li>
+                                <li><a href="ServletIniciarCadastroFuncionario">Cadastrar</a></li>
+                              <li><a href="ServletListarFuncionario">Consultar</a></li>
+                              <li><a href="ServletListarFuncionario">Alterar</a></li>
+                              <li><a href="ServletListarFuncionario">Excluir</a></li>
                             </ul>
                           </li>
                        </ul> 
