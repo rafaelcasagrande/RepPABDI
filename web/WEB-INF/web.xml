@@ -120,6 +120,26 @@
         <servlet-name>ServletManipularFuncionario</servlet-name>
         <servlet-class>SERVLET.ServletManipularFuncionario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletIniciarCadastroUnidade</servlet-name>
+        <servlet-class>SERVLET.ServletIniciarCadastroUnidade</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletListarEnderecoCliente</servlet-name>
+        <servlet-class>SERVLET.ServletListarEnderecoCliente</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletListarCliente</servlet-name>
+        <servlet-class>SERVLET.ServletListarCliente</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletConsultarCliente</servlet-name>
+        <servlet-class>SERVLET.ServletConsultarCliente</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletManipularCliente</servlet-name>
+        <servlet-class>SERVLET.ServletManipularCliente</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletLogin</servlet-name>
         <url-pattern>/ServletLogin</url-pattern>
@@ -239,6 +259,26 @@
     <servlet-mapping>
         <servlet-name>ServletManipularFuncionario</servlet-name>
         <url-pattern>/ServletManipularFuncionario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletIniciarCadastroUnidade</servlet-name>
+        <url-pattern>/ServletIniciarCadastroUnidade</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletListarEnderecoCliente</servlet-name>
+        <url-pattern>/ServletListarEnderecoCliente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletListarCliente</servlet-name>
+        <url-pattern>/ServletListarCliente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletConsultarCliente</servlet-name>
+        <url-pattern>/ServletConsultarCliente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletManipularCliente</servlet-name>
+        <url-pattern>/ServletManipularCliente</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>Login.jsp</welcome-file>

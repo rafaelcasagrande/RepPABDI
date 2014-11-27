@@ -1,6 +1,8 @@
 
 package DAO;
 
+import POJO.Cliente;
+import POJO.Funcionario;
 import POJO.Pessoa;
 import java.util.List;
 
@@ -16,5 +18,6 @@ public interface PessoaDAO {
     public int alterarPessoa(Object pessoa);
     
     public List<Object> listarPessoa();
+    
 
 }

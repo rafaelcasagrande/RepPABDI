@@ -27,7 +27,7 @@
                 <input class="form-control" disabled="true" placeholder="Bairro" type="text" value="${logradouro.getBairro().getBairroNome()}" name="txtUnidadeBairroNome"><br>
                 <input class="form-control" disabled="true" placeholder="Cidade" type="text" value="${logradouro.getBairro().getCidade().getCidadeNome()}" name="txtUnidadeCidadeNome"><br>
                 <input class="form-control" disabled="true" placeholder="Estado" type="text" value="${logradouro.getBairro().getCidade().getEstado().getEstadoNome()}"  name="txtUnidadeEstadoNome"><br>
-                <input class="form-control" placeholder="Gerente" type="text" name="txtUnidadeGerenteLocal"><br>
+                
                 <input hidden="true" type="text" value="${logradouro.getLogradouroCodigo()}" id="codigoLogradouro">
                 <input hidden="true" type="text" value="CadastroUnidade.jsp" id="pagina" name="pagina">
              </form>
@@ -38,7 +38,6 @@
 
         function cadastrarUnidade()
         {
-            
             var nomeUnidade = document.getElementById("txtUnidadeNome").value;
             var telefoneUnidade = document.getElementById("txtUnidadeContatoTelefone").value;
             var telefoneAltUnidade = document.getElementById("txtUnidadeContatoTelefoneAlternativo").value;

@@ -13,28 +13,52 @@
     </head>
     <body>
         <div class="container">
-        
-            <form role="form">
-            
-                <input class="form-control" placeholder="Nome do Cliente" type="text" name="txtClienteNome"><br>
-                <input class="form-control" placeholder="Sobrenome" type="text" name="txtClienteSobrenome"><br>
-                <input class="form-control" placeholder="CPF" type="text" name="txtClienteCpf"><br>
-                <input class="form-control" placeholder="Data de Nascimento" type="text" name="txtClienteDataNascimento"><br>
-                <input class="form-control" placeholder="Telefone" type="text" name="txtClienteTelefone"><br>
-                <input class="form-control" placeholder="Telefone Alternativo" type="text" name="txtClienteTelefoneAlternativo"><br>
-                <input class="form-control" placeholder="Celular" type="text" name="txtClienteCelular"><br>
-                <input class="form-control" placeholder="E-mail" type="text" name="txtClienteEmail"><br>
-                <input class="form-control" placeholder="Logradouro" type="text" name="txtClienteLogradoutoNome"><br>
-                <input class="form-control" placeholder="Número" type="text" name="txtClienteNumeroLogradouto"><br>
-                <input class="form-control" placeholder="Tipo de Logradouro" type="text" name="txtClienteLogradouroTipo"><br>
-                <input class="form-control" placeholder="CEP" type="text" name="txtClienteLogradouroCep"><br>
-                <input class="form-control" placeholder="Bairro" type="text" name="txtClienteBairroNome"><br>
-                <input class="form-control" placeholder="Cidade" type="text" name="txtClienteCidadeNome"><br>
-                <input class="form-control" placeholder="Estado" type="text" name="txtClienteEstadoNome"><br>
-        
-            </form>
-            
+             
+            <form role="form" method="GET" action="ServletListarEnderecoCliente">
+                <input class="form-control" placeholder="Nome do Cliente" value="${cliente.getPessoa().getPessoaNome()}" type="text" id="txtPessoaNome" name="txtPessoaNome"><br>
+                <input class="form-control" placeholder="Sobrenome" value="${cliente.getPessoa().getPessoaSobrenome()}" type="text" id="txtPessoaSobrenome" name="txtPessoaSobrenome"><br>
+                <input class="form-control" placeholder="CPF" value="${cliente.getPessoa().getPessoaCpf()}" type="text" id="txtPessoaCpf" name="txtPessoaCpf"><br>
+                <input class="form-control" placeholder="Data de Nascimento" value="${pessoaDataNascimento}" type="text" id="txtPessoaDataNascimento" name="txtPessoaDataNascimento"><br>
+                <input class="form-control" placeholder="Telefone" type="text" value="${cliente.getPessoa().getContato().getContatoTelefone()}" id="txtContatoTelefone" name="txtContatoTelefone"><br>
+                <input class="form-control" placeholder="Outro Telefone" value="${cliente.getPessoa().getContato().getContatoTelefoneAlternativo()}" type="text" id="txtContatoTelefoneAlternativo" name="txtContatoTelefoneAlternativo"><br>
+                <input class="form-control" placeholder="Celular" value="${cliente.getPessoa().getContato().getContatoCelular()}" type="text" id="txtContatoCelular" name="txtContatoCelular"><br>
+                <input class="form-control" placeholder="E-mail" value="${cliente.getPessoa().getContato().getContatoEmail()}" type="text" id="txtContatoEmail" name="txtContatoEmail"><br>
+                <input class="form-control" placeholder="Número" value="${cliente.getPessoa().getPessoaNumeroLogradouro()}" type="text" id="txtPessoaNumeroLogradouro" name="txtPessoaNumeroLogradouro"><br>
+                <input class="form-control" placeholder="CEP" type="text" value="${cliente.getPessoa().getLogradouro().getLogradouroCep()}" id="txtPessoaLogradouroCep" name="txtPessoaLogradouroCep"><br>
+                <button type="submit" class="btn btn-primary" id="btnValidar">Validar Cep</button><br>
+                <input class="form-control" placeholder="Logradouro" value="${cliente.getPessoa().getLogradouro().getLogradouroNome()}" type="text" id="txtPessoaLogradouroNome" name="txtPessoaLogradouroNome"><br>
+                <input class="form-control" placeholder="Bairro" value="${cliente.getPessoa().getLogradouro().getBairro().getBairroNome()}" type="text" id="txtPessoaBairroNome" name="txtPessoaBairroNome"><br>
+                <input class="form-control" placeholder="Cidade" value="${cliente.getPessoa().getLogradouro().getBairro().getCidade().getCidadeNome()}"type="text" id="txtPessoaCidadeNome" name="txtPessoaCidadeNome"><br>
+                <input class="form-control" placeholder="Estado" value="${cliente.getPessoa().getLogradouro().getBairro().getCidade().getEstado().getEstadoNome()}" type="text" id="txtPessoaEstadoNome" name="txtPessoaEstadoNome"><br>
+                <input hidden="true" type="text" value="${cliente.getPessoa().getLogradouro().getLogradouroCodigo()}" name="txtPessoaLogradouro" id="txtPessoaLogradouro">
+                <input hidden="true" type="text" value="CadastroCliente.jsp" name="pagina">
+             </form>
+                
+             <button onclick="cadastrarCliente()" class="btn btn-primary" id="btnValidar">Cadastrar</button><br>
         </div>
-        
+
+        <script>
+            
+            function cadastrarCliente()
+            {
+                var nomePessoa = document.getElementById("txtPessoaNome").value;
+                var sobrenomePessoa = document.getElementById("txtPessoaSobrenome").value;
+                var cpfPessoa = document.getElementById("txtPessoaCpf").value;
+                var pessoaDataNascimento = document.getElementById("txtPessoaDataNascimento").value;
+                var telefonePessoa = document.getElementById("txtContatoTelefone").value;
+                var telefoneAlternativoPessoa = document.getElementById("txtContatoTelefoneAlternativo").value;
+                var celularPessoa = document.getElementById("txtContatoCelular").value;
+                var emailPessoa = document.getElementById("txtContatoEmail").value;
+                var pessoaNumeroLogradouro = document.getElementById("txtPessoaNumeroLogradouro").value;
+                var pessoaLogradouro = document.getElementById("txtPessoaLogradouro").value;
+                
+                $.get('ServletCadastrarPessoa',{nomePessoa:nomePessoa, sobrenomePessoa:sobrenomePessoa, cpfPessoa:cpfPessoa, pessoaDataNascimento:pessoaDataNascimento, 
+                    telefonePessoa:telefonePessoa, telefoneAlternativoPessoa:telefoneAlternativoPessoa, celularPessoa:celularPessoa, emailPessoa:emailPessoa,
+                    pessoaNumeroLogradouro:pessoaNumeroLogradouro, pessoaLogradouro:pessoaLogradouro,
+                    tipoCadastro:'cliente'},function(){
+                    window.location.reload(true);
+                });
+            }
+        </script>
     </body>
 </html>

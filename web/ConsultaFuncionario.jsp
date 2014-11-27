@@ -15,7 +15,7 @@
         </form>
         
         <form method="GET" action="ServletConsultarFuncionario">
-            <input class="form-control" placeholder="Fornecedor" type="text" name="txtFuncionarioNome">
+            <input class="form-control" placeholder="Funcionario" type="text" name="txtFuncionarioNome">
             <button class="btn btn-primary" type="submit" id="btnConsultarFuncionarios" value="Buscar">Buscar</button>
         </form>
         

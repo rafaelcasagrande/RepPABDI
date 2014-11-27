@@ -29,18 +29,27 @@ public class ServletListarEnderecoUnidade extends HttpServlet {
         String codigoUnidade = request.getParameter("codigoUnidade");
         String codigoContato = request.getParameter("codigoContato");
 
+        
 
         Unidade unidade = new Unidade();
         unidade.setUnidadeNome(unidadeNome);
         unidade.setUnidadeNumeroLogradouro(unidadeNumeroLogradouro);
-        unidade.setUnidadeCodigo(Integer.parseInt(codigoUnidade));
+        
         
         Contato contato = new Contato();
         contato.setContatoCelular(unidadeCelular);
         contato.setContatoEmail(unidadeEmail);
         contato.setContatoTelefone(unidadeTelefone);
         contato.setContatoTelefoneAlternativo(unidadeTelefoneAlternativo);
-        contato.setContatoCodigo(Integer.parseInt(codigoContato));
+        
+        
+        
+        if(codigoUnidade != null)
+        {
+            unidade.setUnidadeCodigo(Integer.parseInt(codigoUnidade));
+            contato.setContatoCodigo(Integer.parseInt(codigoContato));
+        }
+        
         
         unidade.setContato(contato);
         

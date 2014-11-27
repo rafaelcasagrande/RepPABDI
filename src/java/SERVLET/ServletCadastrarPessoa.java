@@ -5,9 +5,11 @@
  */
 package SERVLET;
 
+import DAO.ClienteDAO;
 import DAO.FuncionarioDAO;
 import DAO.PessoaDAO;
 import POJO.Cargo;
+import POJO.Cliente;
 import POJO.Contato;
 import POJO.Funcionario;
 import POJO.Logradouro;
@@ -55,7 +57,8 @@ public class ServletCadastrarPessoa extends HttpServlet {
         try
         {
             dataNascimento = formatoData.parse(pessoaDataNascimento);
-            dataAdmissao = formatoData.parse(funcionarioDataAdmissao);
+            if(funcionarioDataAdmissao != null)
+                dataAdmissao = formatoData.parse(funcionarioDataAdmissao);
         }
         catch(ParseException e)
         {
@@ -78,6 +81,8 @@ public class ServletCadastrarPessoa extends HttpServlet {
         Logradouro logradouro = new Logradouro();
         logradouro.setLogradouroCodigo(Integer.parseInt(pessoaLogradouro));
 
+        Date dataCadastro = new Date();
+        
         if(tipoCadastro.equals("funcionario"))
         {
             
@@ -91,7 +96,7 @@ public class ServletCadastrarPessoa extends HttpServlet {
             Funcionario funcionario = new Funcionario();
             funcionario.setFuncionarioDataAdmissao(dataAdmissao);
             
-            Date dataCadastro = new Date();
+            
             funcionario.setFuncionarioDataCadastro(dataCadastro);
 
             funcionario.setCargo(cargo);
@@ -105,7 +110,15 @@ public class ServletCadastrarPessoa extends HttpServlet {
         }
         else
         {
-         
+            Cliente cliente = new Cliente();
+            cliente.setClienteDataCadastro(dataCadastro);
+            
+            pessoa.setContato(contato);
+            pessoa.setLogradouro(logradouro);
+            cliente.setPessoa(pessoa);
+            
+            ClienteDAO clienteDAO = new ClienteDAO();
+            resultado = clienteDAO.adicionarPessoa(cliente);
         }
     }
 }

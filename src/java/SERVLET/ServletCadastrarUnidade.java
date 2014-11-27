@@ -7,6 +7,7 @@ package SERVLET;
 
 import DAO.UnidadeDAO;
 import POJO.Contato;
+import POJO.Funcionario;
 import POJO.Logradouro;
 import POJO.Unidade;
 import java.io.IOException;

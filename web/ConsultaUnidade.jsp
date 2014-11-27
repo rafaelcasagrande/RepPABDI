@@ -67,8 +67,6 @@
                 <input class="form-control" disabled="true" placeholder="Bairro" type="text" value="${logradouro.getBairro().getBairroNome()}" id="txtUnidadeBairroNome" name="txtUnidadeBairroNome"><br>
                 <input class="form-control" disabled="true" placeholder="Cidade" type="text" value="${logradouro.getBairro().getCidade().getCidadeNome()}" id="txtUnidadeCidadeNome" name="txtUnidadeCidadeNome"><br>
                 <input class="form-control" disabled="true" placeholder="Estado" type="text" value="${logradouro.getBairro().getCidade().getEstado().getEstadoNome()}"  id="txtUnidadeEstadoNome" name="txtUnidadeEstadoNome"><br>
-                <input class="form-control" placeholder="Gerente" type="text" name="txtUnidadeGerenteLocal"><br>
-                
                 <input hidden="true" type="text" value="ServletListarUnidade" name="pagina">
                 <input hidden="true" type="text" value="${unidade.getUnidadeCodigo()}" id="codigoUnidade" name="codigoUnidade">
                 <input hidden="true" type="text" value="${unidade.getContato().getContatoCodigo()}" id="codigoContato" name="codigoContato">

@@ -2,6 +2,7 @@
 package DAO;
 
 
+import POJO.Cliente;
 import POJO.Funcionario;
 import POJO.Pessoa;
 import UTIL.HibernateUtil;
@@ -72,6 +73,7 @@ public class FuncionarioDAO implements PessoaDAO{
         return result + result2 + result3;
     }
 
+    
     public List<Object> consultarPessoa(String nome) {
         
         List<Pessoa> pessoas = new LinkedList<Pessoa>();
@@ -90,7 +92,8 @@ public class FuncionarioDAO implements PessoaDAO{
             {
                 Query queryFuncionario = session.createQuery("from Funcionario Where pessoa = :objeto_pessoa");
                 queryFuncionario.setParameter("objeto_pessoa", pessoa);
-                funcionarios.add(queryFuncionario.list().get(0));
+                if(queryFuncionario.list().size() != 0)
+                    funcionarios.add(queryFuncionario.list().get(0));
             }
         }
         catch(Exception ex)
@@ -117,9 +120,35 @@ public class FuncionarioDAO implements PessoaDAO{
             System.out.println(ex.getMessage());
             return null;
         }
+       
         return pessoas;
     }
 
+    /*
+    public List<Funcionario> listarGerente() {
+        
+        List<Funcionario> pessoas = new LinkedList<Funcionario>();
+        Transaction trns = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try
+        {
+            trns = session.beginTransaction();
+            Query query = session.createQuery("from Funcionario func inner join func.cargo car where car.cargoNome = 'CEO'");
+            pessoas = query.list();
+        }
+        catch(Exception ex)
+        {
+            System.out.println(ex.getMessage());
+            return null;
+        }
+        
+        for (Funcionario pessoa : pessoas) {
+            pessoa.getPessoa().getPessoaNome();
+        }
+        
+        return pessoas;
+    }
+    */
     public boolean removerPessoa(Object objeto) {
         Transaction trns = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
