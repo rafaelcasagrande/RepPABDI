@@ -32,15 +32,14 @@ public class ServletConsultarProduto extends HttpServlet {
         
         ProdutoDAO produtoDao = new ProdutoDAO();
         MarcaDAO marcaDao = new MarcaDAO();
-        
-        String nomeProduto = "txtProdutoNome";
-        
-        nomeProduto = request.getParameter(nomeProduto);
+
+        String nomeProduto = request.getParameter("txtProdutoNome");
+        String pagina = request.getParameter("txtPagina");
         
         marcas = marcaDao.listarMarca();
         produtos = produtoDao.consultarProduto(nomeProduto);
         
-        RequestDispatcher rs = request.getRequestDispatcher("ConsultaProduto.jsp");
+        RequestDispatcher rs = request.getRequestDispatcher(pagina);
         request.setAttribute("produtos", produtos);
         request.setAttribute("marcas", marcas);
 

@@ -17,6 +17,7 @@
         
         <form method="GET" action="ServletConsultarProduto">
             <input class="form-control" placeholder="Produto" type="text" name="txtProdutoNome">
+            <input hidden="true"  type="text" name="txtPagina" value="ConsultaProduto.jsp">
             <button class="btn btn-primary" type="submit" id="btnConsultarProdutos" value="Buscar">Buscar</button>
         </form>
  
