@@ -54,8 +54,8 @@
                           <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Configurações <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                              <li><a href="#">Alterar Username</a></li>
-                              <li><a href="#">Alterar Senha</a></li>
+                              <li><a href="AlteraLogin.jsp">Alterar Username</a></li>
+                              <li><a href="AlteraSenha.jsp">Alterar Senha</a></li>
                             </ul>
                           </li>
                        </ul> 

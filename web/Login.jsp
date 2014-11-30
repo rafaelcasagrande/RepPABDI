@@ -1,10 +1,6 @@
-<%-- 
-    Document   : Login
-    Created on : 24/08/2014, 22:34:33
-    Author     : rafael
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,15 +18,16 @@
     </head>
     <body>
         <div class="container">
-            <form class="form-signin" role="form" method="Post" action="ServletLogin" >
+            <form class="form-signin" role="form" method="POST" action="ServletLogin" >
                 <h2 class="form-sigin-heading">Dados para Login</h2>
-                <input type="text" class="form-control" placeholder="Username" required autofocus>
-                <input type="password" class="form-control" placeholder="Password" required>
+                <input type="text" class="form-control" placeholder="Username" required autofocus name="txtUsername">
+                <input type="password" class="form-control" placeholder="Password" required name="txtPassword">
                 <div class="checkbox">
                     <label>
                         <input type="checkbox" value="Lembrar">Lembrar</label>
                     </label>
                 </div>
+                <label>${mensagem}</label>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
             </form>
         </div>

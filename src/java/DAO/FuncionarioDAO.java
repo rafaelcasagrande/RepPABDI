@@ -2,6 +2,7 @@
 package DAO;
 
 
+import POJO.Acesso;
 import POJO.Cliente;
 import POJO.Funcionario;
 import POJO.Pessoa;
@@ -73,6 +74,14 @@ public class FuncionarioDAO implements PessoaDAO{
         return result + result2 + result3;
     }
 
+
+    public Pessoa consultarPessoa(int codigo) {
+        
+        return null;
+    }
+
+    
+    
     
     public List<Object> consultarPessoa(String nome) {
         
@@ -184,6 +193,7 @@ public class FuncionarioDAO implements PessoaDAO{
         {
             Funcionario funcionario = (Funcionario)tipoPessoa;
             session.beginTransaction();
+            session.save(funcionario.getAcesso());
             session.save(funcionario.getPessoa().getContato());
             session.save(funcionario.getPessoa());
             session.save(funcionario);

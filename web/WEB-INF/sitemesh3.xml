@@ -2,4 +2,5 @@
 <sitemesh>
     <mapping decorator="/WEB-INF/decorators/main.jsp"/>
     <mapping path="/Login.jsp" exlue="true"/>
+    <mapping path="/ServletLogin" exlue="true"/>
 </sitemesh>

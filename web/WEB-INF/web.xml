@@ -140,6 +140,18 @@
         <servlet-name>ServletManipularCliente</servlet-name>
         <servlet-class>SERVLET.ServletManipularCliente</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletCadastrarVenda</servlet-name>
+        <servlet-class>SERVLET.ServletCadastrarVenda</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletVendaBuscaCliente</servlet-name>
+        <servlet-class>SERVLET.ServletVendaBuscaCliente</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletAlterarCredenciais</servlet-name>
+        <servlet-class>SERVLET.ServletAlterarCredenciais</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletLogin</servlet-name>
         <url-pattern>/ServletLogin</url-pattern>
@@ -279,6 +291,18 @@
     <servlet-mapping>
         <servlet-name>ServletManipularCliente</servlet-name>
         <url-pattern>/ServletManipularCliente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletCadastrarVenda</servlet-name>
+        <url-pattern>/ServletCadastrarVenda</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletVendaBuscaCliente</servlet-name>
+        <url-pattern>/ServletVendaBuscaCliente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAlterarCredenciais</servlet-name>
+        <url-pattern>/ServletAlterarCredenciais</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>Login.jsp</welcome-file>

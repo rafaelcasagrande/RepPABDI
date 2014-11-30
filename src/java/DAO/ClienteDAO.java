@@ -49,6 +49,35 @@ public class ClienteDAO implements PessoaDAO{
     }
 
     @Override
+    public Cliente consultarPessoa(int codigo) {
+        
+        Cliente cliente = new Cliente();
+
+        
+        Transaction trns = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try
+        {
+            trns = session.beginTransaction();
+            Query query = session.createQuery("from Cliente Where clienteCodigo = :codigo_cliente");
+            query.setParameter("codigo_cliente", codigo);
+            cliente = (Cliente)query.list().get(0);
+            
+            
+        }
+        catch(Exception ex)
+        {
+            System.out.println(ex.getMessage());
+            return null;
+        } 
+        
+        return cliente;
+    }
+
+    
+    
+    
+    @Override
     public int alterarPessoa(Object objeto) {
         
 

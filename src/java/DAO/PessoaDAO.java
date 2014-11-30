@@ -19,5 +19,6 @@ public interface PessoaDAO {
     
     public List<Object> listarPessoa();
     
+    public Object consultarPessoa(int codigo);
 
 }

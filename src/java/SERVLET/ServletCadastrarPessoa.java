@@ -8,6 +8,7 @@ package SERVLET;
 import DAO.ClienteDAO;
 import DAO.FuncionarioDAO;
 import DAO.PessoaDAO;
+import POJO.Acesso;
 import POJO.Cargo;
 import POJO.Cliente;
 import POJO.Contato;
@@ -85,7 +86,9 @@ public class ServletCadastrarPessoa extends HttpServlet {
         
         if(tipoCadastro.equals("funcionario"))
         {
-            
+            Acesso acesso = new Acesso();
+            acesso.setAcessoSenha(cpfPessoa);
+            acesso.setAcessoUsuario(emailPessoa);
             
             Cargo cargo = new Cargo();
             cargo.setCargoCodigo(Integer.parseInt(funcionarioCargo));
@@ -95,8 +98,7 @@ public class ServletCadastrarPessoa extends HttpServlet {
 
             Funcionario funcionario = new Funcionario();
             funcionario.setFuncionarioDataAdmissao(dataAdmissao);
-            
-            
+            funcionario.setAcesso(acesso);
             funcionario.setFuncionarioDataCadastro(dataCadastro);
 
             funcionario.setCargo(cargo);
