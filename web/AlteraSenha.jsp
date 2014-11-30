@@ -7,18 +7,20 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Alterar Senha</title>
+        <title>Alterar Password</title>
     </head>
     <body>
-        
+        <div align="center">
+            <h1> Alterar Password </h1> 
         <form>
-            <input class="form-control" placeholder="Login" value="" type="text" id="txtLogin" name="txtLogin"><br>
-            <input class="form-control" type="password" placeholder="Senha atual" value="" type="text" id="txtSenhaAtual" name="txtSenhaAtual"><br>
-            <input class="form-control" type="password" placeholder="Nova senha" value="" type="text" id="txtNovaSenha" name="txtNovaSenha"><br>
-            <input class="form-control" type="password" placeholder="Confirma nova senha" value="" type="text" id="txtConfirmaNovaSenha" name="txtConfirmaNovaSenha"><br>
+            <input style="width: 300px;" class="form-control" placeholder="Login" value="" type="text" id="txtLogin" name="txtLogin"><br>
+            <input style="width: 300px;" class="form-control" type="password" placeholder="Senha atual" value="" type="text" id="txtSenhaAtual" name="txtSenhaAtual"><br>
+            <input style="width: 300px;" class="form-control" type="password" placeholder="Nova senha" value="" type="text" id="txtNovaSenha" name="txtNovaSenha"><br>
+            <input style="width: 300px;" class="form-control" type="password" placeholder="Confirma nova senha" value="" type="text" id="txtConfirmaNovaSenha" name="txtConfirmaNovaSenha"><br>
             <button onclick="validarCampos()" class="btn btn-primary" id="btnAlterar">Alterar</button>
+            <input type="button" onclick="limparCampos()" class="btn btn-primary" value="Limpar" id="btnLimpar">
         </form>
-        
+        </div>
         
         <script>
             
@@ -37,6 +39,14 @@
                 {
                     alert("Senha não confere");
                 }
+            }
+            
+            function limparCampos()
+            {
+                document.getElementById("txtLogin").value = "";
+                document.getElementById("txtSenhaAtual").value = "";
+                document.getElementById("txtNovaSenha").value = "";
+                document.getElementById("txtConfirmaNovaSenha").value = "";
             }
             
         </script>

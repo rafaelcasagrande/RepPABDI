@@ -8,6 +8,7 @@ package SERVLET;
 
 import DAO.LoginDAO;
 import POJO.Acesso;
+import POJO.Funcionario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -15,6 +16,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 public class ServletLogin extends HttpServlet {
@@ -34,18 +36,25 @@ public class ServletLogin extends HttpServlet {
         
         acesso.setAcessoUsuario(usuario);
         
-        boolean resultado = false;
-        
+        Funcionario funcionario = new Funcionario();
+
         LoginDAO loginDao = new LoginDAO();
         
-        resultado = loginDao.verificarAcesso(acesso);
+        funcionario = loginDao.verificarAcesso(acesso);
         
         String mensagem = "";
   
-        if(resultado)
+        HttpSession session = request.getSession();
+        
+        if(funcionario != null)
+        {
             response.sendRedirect("CadastroCargo.jsp");
+            session.setAttribute("login", funcionario.getAcesso().getAcessoUsuario());
+            session.setAttribute("codigoFuncionario", funcionario.getFuncionarioCodigo());
+        }
         else
         {
+            session.invalidate();
             mensagem = "Login e/ou Senha inválidos";
             request.setAttribute("mensagem", mensagem);
             RequestDispatcher rs = request.getRequestDispatcher("Login.jsp");

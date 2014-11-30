@@ -10,6 +10,7 @@ import POJO.ProdutoVenda;
 import POJO.Venda;
 import UTIL.HibernateUtil;
 import java.util.List;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 /**

@@ -9,16 +9,20 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Alterar Login</title>
+        <title>Alterar Username</title>
     </head>
     <body>
-        <form>
-            <input class="form-control" placeholder="Login atual" value="" type="text" id="txtLoginAtual" name="txtLoginAtual"><br>
-            <input class="form-control" placeholder="Novo login" value="" type="text" id="txtNovoLogin" name="txtNovoLogin"><br>
-            <input class="form-control" placeholder="Confirma novo login" value="" type="text" id="txtConfirmaNovoLogin" name="txtConfirmaNovoLogin"><br>
-            <button onclick="validarCampos()" class="btn btn-primary" id="btnAlterar">Alterar</button>
-        </form>
         
+        <div align="center">
+            <h1> Alterar Username </h1> 
+            <form>
+                <input style="width: 300px;" class="form-control" placeholder="Login atual" value="" type="text" id="txtLoginAtual" name="txtLoginAtual"><br>
+                <input style="width: 300px;" class="form-control" placeholder="Novo login" value="" type="text" id="txtNovoLogin" name="txtNovoLogin"><br>
+                <input style="width: 300px;" class="form-control" placeholder="Confirma novo login" value="" type="text" id="txtConfirmaNovoLogin" name="txtConfirmaNovoLogin"><br>
+                <button onclick="validarCampos()" class="btn btn-primary" id="btnAlterar">Alterar</button>
+                <input type="button" onclick="limparCampos()" class="btn btn-primary" value="Limpar" id="btnLimpar">
+            </form>
+        </div>
         
         <script>
             
@@ -36,6 +40,14 @@
                 {
                     alert("Login não confere");
                 }
+            }
+            
+            
+            function limparCampos()
+            {
+                document.getElementById("txtLoginAtual").value = "";
+                document.getElementById("txtNovoLogin").value = "";
+                document.getElementById("txtConfirmaNovoLogin").value = "";
             }
             
         </script>

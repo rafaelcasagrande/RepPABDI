@@ -17,18 +17,16 @@
 
     </head>
     <body>
-        <div class="container">
+        <div align="center">
             <form class="form-signin" role="form" method="POST" action="ServletLogin" >
                 <h2 class="form-sigin-heading">Dados para Login</h2>
-                <input type="text" class="form-control" placeholder="Username" required autofocus name="txtUsername">
-                <input type="password" class="form-control" placeholder="Password" required name="txtPassword">
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" value="Lembrar">Lembrar</label>
-                    </label>
-                </div>
-                <label>${mensagem}</label>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+                <input style="width: 300px;" type="text" class="form-control" placeholder="Username" required autofocus name="txtUsername"><br>
+                <input style="width: 300px;" type="password" class="form-control" placeholder="Password" required name="txtPassword"><br>
+                <c:if test="${mensagem != null}">
+                    <div style="width: 300px;" class="alert alert-danger">${mensagem}</div>
+                </c:if>
+
+                <button style="width: 300px;" class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
             </form>
         </div>
     </body>

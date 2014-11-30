@@ -152,6 +152,10 @@
         <servlet-name>ServletAlterarCredenciais</servlet-name>
         <servlet-class>SERVLET.ServletAlterarCredenciais</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletEncerrarSessao</servlet-name>
+        <servlet-class>SERVLET.ServletEncerrarSessao</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletLogin</servlet-name>
         <url-pattern>/ServletLogin</url-pattern>
@@ -303,6 +307,10 @@
     <servlet-mapping>
         <servlet-name>ServletAlterarCredenciais</servlet-name>
         <url-pattern>/ServletAlterarCredenciais</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletEncerrarSessao</servlet-name>
+        <url-pattern>/ServletEncerrarSessao</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>Login.jsp</welcome-file>

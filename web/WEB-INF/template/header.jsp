@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -110,16 +113,6 @@
 
                         <ul class="nav navbar-nav">
                           <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Relatório <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                              <li><a href="#">Relatório Local</a></li>
-                              <li><a href="#">Relatório Geral</a></li>
-                            </ul>
-                          </li>
-                       </ul>  
-
-                        <ul class="nav navbar-nav">
-                          <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Unidade <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="CadastroUnidade.jsp">Cadastrar</a></li>
@@ -137,16 +130,15 @@
                             <ul class="dropdown-menu" role="menu">
                               <li><a href="CadastroVenda.jsp">Cadastro</a></li>
                               <li><a href="#">Consultar</a></li>
-                              <li><a href="#">Excluir</a></li>
                             </ul>
                           </li>
                         </ul>  
 
                         <ul class="nav navbar-nav navbar-right">
                           <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Bem vindo, ${sessionScope.login} <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                              <li><a href="#">Sair</a></li>
+                              <li><a href="ServletEncerrarSessao">Sair</a></li>
                             </ul>
                           </li>
                        </ul>

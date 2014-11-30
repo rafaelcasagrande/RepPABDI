@@ -11,16 +11,16 @@
         <title>Cadastrar Venda</title>
     </head>
     <body>
-
-        
-        <form method="GET" action="ServletVendaBuscaCliente">
-            <input class="form-control" placeholder="Código do Cliente" type="text" name="txtClienteCodigo" id="txtClienteCodigo">
-            <label> ${cliente.getPessoa().getPessoaNome()} ${cliente.getPessoa().getPessoaSobrenome()} </label>
+        <div align="center" class="container">
+        <h1> Cadastrar Venda </h1> 
+        <label> Cliente: ${cliente.getPessoa().getPessoaNome()} ${cliente.getPessoa().getPessoaSobrenome()} </label>
+        <form method="GET" action="ServletVendaBuscaCliente" class="form-inline">
+            <input style="width: 300px;" class="form-control" placeholder="Código do Cliente" type="text" name="txtClienteCodigo" id="txtClienteCodigo">
             <button class="btn btn-primary" type="submit" id="btnConsultarCliente" value="Buscar">Buscar</button>
         </form>
-        
-        <form method="GET" action="ServletConsultarProduto">
-            <input class="form-control" placeholder="Produto" type="text" name="txtProdutoNome" id="txtProdutoNome">
+        <br>
+        <form method="GET" action="ServletConsultarProduto" class="form-inline">
+            <input style="width: 300px;" class="form-control" placeholder="Produto" type="text" name="txtProdutoNome" id="txtProdutoNome">
             <input hidden="true"  type="text" name="txtPagina" value="CadastroVenda.jsp">
             <input hidden="true"  type="text" name="txtCodigosProdutos" id="txtCodigosProdutos" value="${txtCodigosProdutos}">
             <input hidden="true"  type="text" name="txtPrecosProdutos" id="txtPrecosProdutos" value="${txtPrecosProdutos}">
@@ -79,25 +79,34 @@
                 <tr> 
                     <td> ${produtoCarrinho.getProdutoNome()} </td>
                     <td> ${produtoCarrinho.getProdutoPreco()} </td> +      
-                    <td> <input class='form-control' placeholder='Qtde.' type='text' onblur="calcularTotal(${produtoCarrinho.getProdutoPreco()}, ${produtoCarrinho.getProdutoCodigo()})" id='txtQtde${produtoCarrinho.getProdutoCodigo()}'> </td>" +
+                    <td> <input class='form-control' size="5" placeholder='Qtde.' type='text' onblur="calcularTotal(${produtoCarrinho.getProdutoPreco()}, ${produtoCarrinho.getProdutoCodigo()})" id='txtQtde${produtoCarrinho.getProdutoCodigo()}'> </td>" +
                     <td> <button type='submit' class='btn btn-default'> <span class='glyphicon glyphicon-trash'> </span> </button> </td>" +
                 </tr>
                 </c:forEach>
             </tbody>
         </table>  
         
-        
-        <label> Valor Total: </label> <input type="text" id="txtValorTotal" value="">
-        
-        <button class="btn btn-primary" type="submit" onclick="vender()" id="btnVender" value="Vender">Vender</button>
-
-        <form>
-            <input type="radio" id="cartaocredito" name="pgto" value="cartao credito" checked> Cartão de Crédito
-            <br>
-            <input type="radio" id="cartaodebito" name="pgto" value="cartao debito"> Cartão de Débito
-            <br>
-            <input type="radio" id="dinheiro" name="pgto" value="dinheiro"> Dinheiro
-        </form>
+        <table>
+            <tr>
+                <td>
+                    <form>
+                        <fieldset>
+                            <legend>Forma de Pagamento</legend>
+                                <input type="radio" id="cartaocredito" name="pgto" value="cartao credito" checked> Cartão de Crédito
+                                <br>
+                                <input type="radio" id="cartaodebito" name="pgto" value="cartao debito"> Cartão de Débito
+                                <br>
+                                <input type="radio" id="dinheiro" name="pgto" value="dinheiro"> Dinheiro
+                        </fieldset>
+                    </form>
+                </td>
+                <td>
+                    <label style="font-size: 40pt;"> Valor Total: </label> <input disabled="true" size="3" style="font-size: 40pt;" type="text" id="txtValorTotal" value="">
+                    <button class="btn btn-primary" type="submit" onclick="vender()" id="btnVender" value="Vender" style="font-size: 20pt; height:80px; width:200px">Concluir Venda</button>
+                </td>
+                
+            </tr>
+        </table>
         
         
         <script>
@@ -152,7 +161,7 @@
                 "<tr>" +
                     "<td>" + paramNomeProduto + "</td>" +
                     "<td>" + paramPrecoProduto + "</td>" +      
-                    "<td> <input class='form-control' placeholder='Qtde.' type='text' onblur='calcularTotal("+ paramPrecoProduto + ", " + paramCodigoProduto +")' id='txtQtde"+ paramCodigoProduto +"'> </td>" +
+                    "<td> <input class='form-control' size='5' placeholder='Qtde.' type='text' onblur='calcularTotal("+ paramPrecoProduto + ", " + paramCodigoProduto +")' id='txtQtde"+ paramCodigoProduto +"'> </td>" +
                     "<td> <button type='submit' class='btn btn-default'> <span class='glyphicon glyphicon-trash'> </span> </button> </td>" +
                 "</tr>");
             }
@@ -185,6 +194,6 @@
 
         </script>
             
-        
+        </div>
     </body>
 </html>

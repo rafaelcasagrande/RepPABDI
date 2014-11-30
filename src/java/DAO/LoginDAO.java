@@ -6,6 +6,7 @@
 package DAO;
 
 import POJO.Acesso;
+import POJO.Funcionario;
 import UTIL.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -18,11 +19,12 @@ import org.hibernate.Transaction;
 public class LoginDAO {
     
     
-    public boolean verificarAcesso(Acesso acesso)
+    public Funcionario verificarAcesso(Acesso acesso)
     {
         Transaction trns = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         Acesso verificaAcesso = new Acesso();
+        Funcionario funcionario = new Funcionario();
         
         try
         {
@@ -31,11 +33,23 @@ public class LoginDAO {
             query.setParameter("acesso_usuario", acesso.getAcessoUsuario());
             query.setParameter("acesso_senha", acesso.getAcessoSenha());
             verificaAcesso = (Acesso)query.list().get(0);
+            
+            if(verificaAcesso == null)
+            {
+                return null;
+            }
+            else
+            {
+                Query queryFuncionario = session.createQuery("from Funcionario Where acesso = :acesso_funcionario");
+                queryFuncionario.setParameter("acesso_funcionario", verificaAcesso);
+                funcionario = (Funcionario) queryFuncionario.list().get(0);
+            }
+            
         }
         catch(Exception ex)
         {
             System.out.println(ex.getMessage());
-            return false;
+            return null;
         }
         finally
         {
@@ -43,9 +57,10 @@ public class LoginDAO {
             session.close();
         }
         
-        if(verificaAcesso == null)
-            return false;
-        return true;
+        if(funcionario == null)
+            return null;
+        return funcionario;
+       
     }
     
     public boolean alterarLogin(String loginAtual, String novoLogin)

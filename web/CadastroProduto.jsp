@@ -11,14 +11,14 @@
         <title>Cadastrar Produto</title>
     </head>
     <body>
-        <div class="container">
-        
-            <form role="form" action="ServletCadastrarProduto" >
+        <div align="center">
+            <h1> Cadastrar Produto </h1> 
+            <form role="form" action="ServletCadastrarProduto">
              
-                <input class="form-control" placeholder="Quantidade" type="text" name="txtProdutoQuantidade" id="txtProdutoQuantidade"><br>
-                <input class="form-control" placeholder="Descrição" type="text" name="txtProdutoDescricao" id="txtProdutoDescricao"><br>
-                <input class="form-control" placeholder="Nome" type="text" name="txtProdutoNome" id="txtProdutoNome"><br>
-                <input class="form-control" placeholder="Preço" type="text" name="txtProdutoPreco" id="txtProdutoPreco"><br>
+                <input style="width: 300px;" class="form-control" placeholder="Nome" type="text" name="txtProdutoNome" id="txtProdutoNome"><br>
+                <input style="width: 300px;" class="form-control" placeholder="Descrição" type="text" name="txtProdutoDescricao" id="txtProdutoDescricao"><br>
+                <input style="width: 300px;" class="form-control" placeholder="Quantidade" type="text" name="txtProdutoQuantidade" id="txtProdutoQuantidade"><br>
+                <input style="width: 300px;" class="form-control" placeholder="Preço" type="text" name="txtProdutoPreco" id="txtProdutoPreco"><br>
 
                 <select name="cbxMarcas" id="cbxMarcas" >
                     <option selected disabled> Marca </option>
@@ -33,13 +33,22 @@
                         <option value="${fornecedor.getFornecedorCodigo()}"> ${fornecedor.getFornecedorNome()} </option>
                     </c:forEach>
                 </select>
-                
+                <br><br>
                 <button type="submit" class="btn btn-primary" id="btnCadastrar">Cadastrar</button> 
+                <input type="button" onclick="limparCampos()" class="btn btn-primary" value="Limpar" id="btnLimpar">
             </form>
          </div>
+        
+        <script>
+            
+            function limparCampos()
+            {
+                document.getElementById("txtProdutoNome").value = "";
+                document.getElementById("txtProdutoDescricao").value = "";
+                document.getElementById("txtProdutoQuantidade").value = "";
+                document.getElementById("txtProdutoPreco").value = "";
+            }
+        </script>
+        
     </body>
-    
-    
-    
-    
 </html>

@@ -13,10 +13,23 @@
     </head>
     <body>
         
-        <form method="GET" action="ServletCadastrarMarca">
-            <input class="form-control" placeholder="Marca" type="text" name="txtMarcaNome"><br>
-            <button type="submit" class="btn btn-primary" id="btnCadastrar">Cadastrar</button> 
-        </form>
-       
+        <div align="center">
+            <h1> Cadastrar Marca </h1> 
+            <form method="GET" action="ServletCadastrarMarca">
+                <input style="width: 300px;" class="form-control" placeholder="Marca" type="text" id="txtMarcaNome" name="txtMarcaNome"><br>
+                <button type="submit" class="btn btn-primary" id="btnCadastrar">Cadastrar</button> 
+                <input type="button" onclick="limparCampos()" class="btn btn-primary" id="btnLimpar" value="Limpar">
+            </form>
+        </div>
+        
+        <script>
+            
+            function limparCampos()
+            {
+                document.getElementById("txtMarcaNome").value = "";
+            }
+            
+        </script>
+        
     </body>
 </html>

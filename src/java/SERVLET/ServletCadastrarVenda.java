@@ -2,7 +2,9 @@
 package SERVLET;
 
 import DAO.VendaDAO;
+import POJO.Acesso;
 import POJO.Cliente;
+import POJO.Funcionario;
 import POJO.Produto;
 import POJO.ProdutoVenda;
 import POJO.Venda;
@@ -16,6 +18,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 public class ServletCadastrarVenda extends HttpServlet {
@@ -70,8 +73,13 @@ public class ServletCadastrarVenda extends HttpServlet {
             produtosVendas.add(produtoVenda);
         }
         
+        HttpSession session = request.getSession();
+        Funcionario funcionario = new Funcionario();
+        funcionario.setFuncionarioCodigo(Integer.parseInt(session.getAttribute("codigoFuncionario").toString()));
+        
+        venda.setFuncionario(funcionario);
+        
         VendaDAO vendaDao = new VendaDAO();
         resultado = vendaDao.adicionarVenda(venda, produtosVendas);
-
     }
 }
