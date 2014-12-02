@@ -12,13 +12,17 @@
     </head>
     <body>
         
+        <div align="center" class="container">
+        
+            <h1>Consultar Marcas</h1>
+            
         <form method="GET" action="ServletListarMarca">
-            <button class="btn btn-primary" type="submit" id="btnListarMarcas" value="Atualizar">Atualizar</button>
+            <button class="btn btn-primary" type="submit" id="btnListarMarcas" value="Atualizar">Atualizar</button><br><br>
         </form>
         
-        <form method="GET" action="ServletConsultarMarca">
-            <input class="form-control" placeholder="Marca" type="text" name="txtMarcaNome">
-            <button class="btn btn-primary" type="submit" id="btnConsultarMarcas" value="Buscar">Buscar</button>
+        <form method="GET" action="ServletConsultarMarca" class="form-inline">
+            <input style="width: 300px;" class="form-control" placeholder="Marca" type="text" name="txtMarcaNome">
+            <button class="btn btn-primary" type="submit" id="btnConsultarMarcas" value="Buscar">Buscar</button><br><br>
         </form>
         
 
@@ -38,11 +42,20 @@
         </table>
 
 
-        <input disabled="true" class="form-control" placeholder="Codigo" type="text" id="txtCodigoAlterar" name="txtCodigoAlterar">
-        <input class="form-control" placeholder="Marca" type="text" id="txtMarcaNomeAlterar" name="txtMarcaNomeAlterar"><br>
+            <input style="width: 300px;" disabled="true" class="form-control" placeholder="Codigo" type="text" id="txtCodigoAlterar" name="txtCodigoAlterar"><br>
+            <input style="width: 300px;" class="form-control" placeholder="Marca" type="text" id="txtMarcaNomeAlterar" name="txtMarcaNomeAlterar"><br>
         <button type="submit" class="btn btn-primary" onclick="alterarMarca()" id="btnAlterarMarca">Alterar</button> 
-            
+        <input type="button" onclick="limparCampos()" class="btn btn-primary" id="btnLimpar" value="Limpar">
+        
+        
         <script>
+            
+            function limparCampos()
+            {
+                document.getElementById("txtCodigoAlterar").value = "";
+                document.getElementById("txtMarcaNomeAlterar").value = "";
+            }
+            
             function excluirMarca(ParametroCodigoMarca, ParametroNomeMarca)
             {
                 alert(ParametroCodigoMarca + ParametroNomeMarca + 'excluir');
@@ -72,5 +85,6 @@
             }
         </script>
         
+        </div>
     </body>
 </html>

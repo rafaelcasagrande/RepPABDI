@@ -9,13 +9,19 @@
         <title>Consultar Cargo</title>
     </head>
     <body>
-        <form method="GET" action="ServletListarCargo">
-            <button class="btn btn-primary" type="submit" id="btnListarCargos" value="Atualizar">Atualizar</button>
+        
+        <div align="center" class="container">
+        
+            <h1>Consultar Cargo</h1>
+            
+        <form method="GET" action="ServletListarCargo" class="form-inline">
+            
+            <button class="btn btn-primary" type="submit" id="btnListarCargos" value="Atualizar">Atualizar</button><br><br>
         </form>
         
-        <form method="GET" action="ServletConsultarCargo">
-            <input class="form-control" placeholder="Cargo" type="text" name="txtCargoNome">
-            <button class="btn btn-primary" type="submit" id="btnConsultarCargos" value="Buscar">Buscar</button>
+        <form method="GET" action="ServletConsultarCargo" class="form-inline">
+            <input style="width: 300px;" class="form-control" placeholder="Cargo" type="text" name="txtCargoNome">
+            <button class="btn btn-primary" type="submit" id="btnConsultarCargos" value="Buscar">Buscar</button><br><br>
         </form>
         
 
@@ -36,11 +42,11 @@
             </c:forEach>
         </table>
         
-        <input disabled="true" type="text" class="form-control" placeholder="Código" id="txtCargoCodigoAlterar" name="txtCargoCodigoAlterar"><br>
-        <input type="text" class="form-control" placeholder="Salário" id="txtCargoSalarioAlterar" name="txtCargoSalarioAlterar"><br>
-        <input type="text" class="form-control" placeholder="Cargo" id="txtCargoNomeAlterar" name="txtCargoNomeAlterar"><br>
+        <input style="width: 300px;" disabled="true" type="text" class="form-control" placeholder="Código" id="txtCargoCodigoAlterar" name="txtCargoCodigoAlterar"><br>
+        <input style="width: 300px;" type="text" class="form-control" placeholder="Salário" id="txtCargoSalarioAlterar" name="txtCargoSalarioAlterar"><br>
+        <input style="width: 300px;" type="text" class="form-control" placeholder="Cargo" id="txtCargoNomeAlterar" name="txtCargoNomeAlterar"><br>
         <button type="submit" onclick="alterarCargo()" class="btn btn-primary" id="btnAlterar">Alterar</button>
-        
+        <input type="button" onclick="limparCampos()" class="btn btn-primary" id="btnLimpar" value="Limpar">
                 
                 
                 
@@ -75,6 +81,17 @@
                     window.location.reload(true);
                 });  
             }
+            
+            function limparCampos()
+            {
+                document.getElementById("txtCargoCodigoAlterar").value = "";
+                document.getElementById("txtCargoNomeAlterar").value = "";
+                document.getElementById("txtCargoSalarioAlterar").value = "";
+            }
+            
         </script>
+        
+        </div>
+        
     </body>
 </html>

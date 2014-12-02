@@ -11,14 +11,18 @@
     </head>
     <body>
         
+        <div align="center" class="container">
+        
+            <h1>Consultar Produtos</h1>
+            
         <form method="GET" action="ServletListarProduto">
-            <button class="btn btn-primary" type="submit" id="btnListarProdutos" value="Atualizar">Atualizar</button>
+            <button class="btn btn-primary" type="submit" id="btnListarProdutos" value="Atualizar">Atualizar</button><br><br>
         </form>
         
-        <form method="GET" action="ServletConsultarProduto">
-            <input class="form-control" placeholder="Produto" type="text" name="txtProdutoNome">
+        <form method="GET" action="ServletConsultarProduto" class="form-inline">
+            <input style="width: 300px;" class="form-control" placeholder="Produto" type="text" name="txtProdutoNome">
             <input hidden="true"  type="text" name="txtPagina" value="ConsultaProduto.jsp">
-            <button class="btn btn-primary" type="submit" id="btnConsultarProdutos" value="Buscar">Buscar</button>
+            <button class="btn btn-primary" type="submit" id="btnConsultarProdutos" value="Buscar">Buscar</button><br><br>
         </form>
  
         <table class="table table-striped">
@@ -48,28 +52,42 @@
         </table>    
         
         <form role="form">
-                <input disabled="true" class="form-control" placeholder="Código" type="text" name="txtProdutoCodigo" id="txtProdutoCodigo"><br>
-                <input class="form-control" placeholder="Quantidade" type="text" name="txtProdutoQuantidade" id="txtProdutoQuantidade"><br>
-                <input class="form-control" placeholder="Descrição" type="text" name="txtProdutoDescricao" id="txtProdutoDescricao"><br>
-                <input class="form-control" placeholder="Nome" type="text" name="txtProdutoNome" id="txtProdutoNome"><br>
-                <input class="form-control" placeholder="Preço" type="text" name="txtProdutoPreco" id="txtProdutoPreco"><br>
+                <input style="width: 300px;" disabled="true" class="form-control" placeholder="Código" type="text" name="txtProdutoCodigo" id="txtProdutoCodigo"><br>
+                <input style="width: 300px;" class="form-control" placeholder="Quantidade" type="text" name="txtProdutoQuantidade" id="txtProdutoQuantidade"><br>
+                <input style="width: 300px;" class="form-control" placeholder="Descrição" type="text" name="txtProdutoDescricao" id="txtProdutoDescricao"><br>
+                <input style="width: 300px;" class="form-control" placeholder="Nome" type="text" name="txtProdutoNome" id="txtProdutoNome"><br>
+                <input style="width: 300px;" class="form-control" placeholder="Preço" type="text" name="txtProdutoPreco" id="txtProdutoPreco"><br>
 
                 <select name="cbxMarcas" id="cbxMarcas" >
+                    <option selected disabled> Marca </option>
                     <c:forEach items="${marcas}" var="marca" varStatus="loop">
                         <option value="${marca.getMarcaCodigo()}"> ${marca.getMarcaNome()} </option>
                     </c:forEach>
                 </select>
                 
                 <select name="cbxFornecedores" id="cbxFornecedores" >
+                    <option selected disabled> Fornecedor </option>
                     <c:forEach items="${fornecedores}" var="fornecedor" varStatus="loop">
                         <option value="${fornecedor.getFornecedorCodigo()}"> ${fornecedor.getFornecedorNome()} </option>
                     </c:forEach>
                 </select>
                 
+                <br><br>
+                
                 <button type="submit" onclick="alterarProduto()" class="btn btn-primary" id="btnAlterar">Alterar</button> 
+                <input type="button" onclick="limparCampos()" class="btn btn-primary" id="btnLimpar" value="Limpar">
             </form>
         
     <script>
+        
+        function limparCampos()
+        {
+            document.getElementById("txtProdutoCodigo").value = "";
+            document.getElementById("txtProdutoQuantidade").value = "";
+            document.getElementById("txtProdutoDescricao").value = "";
+            document.getElementById("txtProdutoNome").value = "";
+            document.getElementById("txtProdutoPreco").value = "";
+        }
         
         function alterarProduto()
         {
@@ -107,6 +125,8 @@
         
         
     </script>
+    
+        </div>
     
     </body>
 </html>

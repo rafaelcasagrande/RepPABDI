@@ -9,13 +9,16 @@
         <title>Consultar Fornecedor</title>
     </head>
     <body>
+        
+        <div align="center">
+            <h1> Consultar Fornecedores </h1>
         <form method="GET" action="ServletListarFornecedor">
-            <button class="btn btn-primary" type="submit" id="btnListarFornecedores" value="Atualizar">Atualizar</button>
+            <button class="btn btn-primary" type="submit" id="btnListarFornecedores" value="Atualizar">Atualizar</button><br><br>
         </form>
         
-        <form method="GET" action="ServletConsultarFornecedor">
-            <input class="form-control" placeholder="Fornecedor" type="text" name="txtFornecedorNome">
-            <button class="btn btn-primary" type="submit" id="btnConsultarFornecedores" value="Buscar">Buscar</button>
+        <form method="GET" action="ServletConsultarFornecedor" class="form-inline">
+            <input style="width: 300px;" class="form-control" placeholder="Fornecedor" type="text" name="txtFornecedorNome">
+                   <button class="btn btn-primary" type="submit" id="btnConsultarFornecedores" value="Buscar">Buscar</button><br><br>
         </form>
         
 
@@ -55,20 +58,20 @@
         </table>
         
         <div class="container">
-            <form method="GET" action="ServletListarEndereco">
-                <input class="form-control" placeholder="Nome do Fornecedor" type="text" value="${fornecedor.getFornecedorNome()}" id="txtFornecedorNome" name="txtFornecedorNome"><br>
-                <input class="form-control" placeholder="CNPJ" type="text" value="${fornecedor.getFornecedorCnpj()}" id="txtFornecedorCnpj" name="txtFornecedorCnpj"><br>
-                <input class="form-control" placeholder="Telefone" type="text" value="${fornecedor.getContato().getContatoTelefone()}" id="txtFornecedorTelefone" name="txtFornecedorTelefone"><br>
-                <input class="form-control" placeholder="Outro Telefone" type="text" value="${fornecedor.getContato().getContatoTelefoneAlternativo()}" id="txtFornecedorTelefoneAlternativo" name="txtFornecedorTelefoneAlternativo"><br>
-                <input class="form-control" placeholder="Celular" type="text" value="${fornecedor.getContato().getContatoCelular()}" id="txtFornecedorCelular" name="txtFornecedorCelular"><br>
-                <input class="form-control" placeholder="E-mail" type="text" value="${fornecedor.getContato().getContatoEmail()}" id="txtFornecedorEmail" name="txtFornecedorEmail"><br>
-                <input class="form-control" placeholder="Número" type="text" value="${fornecedor.getFornecedorNumeroLogradouro()}" id="txtFornecedorNumeroLogradouro" name="txtFornecedorNumeroLogradouro"><br>
-                <input class="form-control" placeholder="CEP" type="text" value="${logradouro.getLogradouroCep()}" id="txtFornecedorLogradouroCep" name="txtFornecedorLogradouroCep">
-                    <button type="submit" class="btn btn-primary" id="btnValidar">Validar Cep</button><br>
-                <input class="form-control" disabled="true" placeholder="Logradouro" type="text" value="${logradouro.getLogradouroNome()}" id="txtFornecedorLogradoutoNome" name="txtFornecedorLogradoutoNome"><br>
-                <input class="form-control" disabled="true" placeholder="Bairro" type="text" value="${logradouro.getBairro().getBairroNome()}" id="txtFornecedorBairroNome" name="txtFornecedorBairroNome"><br>
-                <input class="form-control" disabled="true" placeholder="Cidade" type="text" value="${logradouro.getBairro().getCidade().getCidadeNome()}" id="txtFornecedorCidadeNome" name="txtFornecedorCidadeNome"><br>
-                <input class="form-control" disabled="true" placeholder="Estado" type="text" value="${logradouro.getBairro().getCidade().getEstado().getEstadoNome()}"  id="txtFornecedorEstadoNome" name="txtFornecedorEstadoNome"><br>
+            <form method="GET" action="ServletListarEndereco" class="form-inline">
+                <input style="width: 300px;" class="form-control" placeholder="Nome do Fornecedor" type="text" value="${fornecedor.getFornecedorNome()}" id="txtFornecedorNome" name="txtFornecedorNome">
+                <input style="width: 300px;" class="form-control" placeholder="CNPJ" type="text" value="${fornecedor.getFornecedorCnpj()}" id="txtFornecedorCnpj" name="txtFornecedorCnpj"><br><br>
+                <input style="width: 300px;" class="form-control" placeholder="Telefone" type="text" value="${fornecedor.getContato().getContatoTelefone()}" id="txtFornecedorTelefone" name="txtFornecedorTelefone">
+                <input style="width: 300px;" class="form-control" placeholder="Outro Telefone" type="text" value="${fornecedor.getContato().getContatoTelefoneAlternativo()}" id="txtFornecedorTelefoneAlternativo" name="txtFornecedorTelefoneAlternativo"><br><br>
+                <input style="width: 300px;" class="form-control" placeholder="Celular" type="text" value="${fornecedor.getContato().getContatoCelular()}" id="txtFornecedorCelular" name="txtFornecedorCelular">
+                <input style="width: 300px;" class="form-control" placeholder="E-mail" type="text" value="${fornecedor.getContato().getContatoEmail()}" id="txtFornecedorEmail" name="txtFornecedorEmail"><br><br>
+                <input style="width: 300px;" class="form-control" placeholder="Número" type="text" value="${fornecedor.getFornecedorNumeroLogradouro()}" id="txtFornecedorNumeroLogradouro" name="txtFornecedorNumeroLogradouro">
+                <input style="width: 200px;" class="form-control" placeholder="CEP" type="text" value="${logradouro.getLogradouroCep()}" id="txtFornecedorLogradouroCep" name="txtFornecedorLogradouroCep">
+                    <button type="submit" class="btn btn-primary" id="btnValidar">Validar Cep</button><br><br>
+                <input style="width: 300px;" class="form-control" disabled="true" placeholder="Logradouro" type="text" value="${logradouro.getLogradouroNome()}" id="txtFornecedorLogradoutoNome" name="txtFornecedorLogradoutoNome">
+                <input style="width: 300px;" class="form-control" disabled="true" placeholder="Bairro" type="text" value="${logradouro.getBairro().getBairroNome()}" id="txtFornecedorBairroNome" name="txtFornecedorBairroNome"><br><br>
+                <input style="width: 300px;" class="form-control" disabled="true" placeholder="Cidade" type="text" value="${logradouro.getBairro().getCidade().getCidadeNome()}" id="txtFornecedorCidadeNome" name="txtFornecedorCidadeNome">
+                <input style="width: 300px;" class="form-control" disabled="true" placeholder="Estado" type="text" value="${logradouro.getBairro().getCidade().getEstado().getEstadoNome()}"  id="txtFornecedorEstadoNome" name="txtFornecedorEstadoNome"><br><br>
                 
                 <input hidden="true" type="text" value="ServletListarFornecedor" name="pagina">
                 <input hidden="true" type="text" value="${fornecedor.getFornecedorCodigo()}" id="codigoFornecedor" name="codigoFornecedor">
@@ -77,9 +80,29 @@
                 
             </form>
                 <button onclick="alterarFornecedor()" class="btn btn-primary" id="btnAlterar">Alterar</button>
+                <input type="button" onclick="limparCampos()" class="btn btn-primary" id="btnLimpar" value="Limpar">
         </div>   
         
         <script>
+            
+            function limparCampos()
+            {
+                document.getElementById("codigoLogradouro").value = "";
+                document.getElementById("codigoContato").value = "";
+                document.getElementById("codigoFornecedor").value = "";
+                document.getElementById("txtFornecedorNome").value = "";
+                document.getElementById("txtFornecedorCnpj").value = "";
+                document.getElementById("txtFornecedorTelefone").value = "";
+                document.getElementById("txtFornecedorTelefoneAlternativo").value = "";
+                document.getElementById("txtFornecedorCelular").value = "";
+                document.getElementById("txtFornecedorEmail").value = "";
+                document.getElementById("txtFornecedorNumeroLogradouro").value = "";
+                document.getElementById("txtFornecedorLogradouroCep").value = "";
+                document.getElementById("txtFornecedorLogradoutoNome").value = "";
+                document.getElementById("txtFornecedorBairroNome").value = "";
+                document.getElementById("txtFornecedorCidadeNome").value = "";
+                document.getElementById("txtFornecedorEstadoNome").value = "";
+            }
             
             function excluirFornecedor(paramCodigoFornecedor, paramCodigoContato)
             {
@@ -127,6 +150,6 @@
             
         </script>
         
-        
+        </div>
     </body>
 </html>

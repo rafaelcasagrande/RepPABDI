@@ -10,13 +10,17 @@
     </head>
     <body>
         
+        <div align="center">
+        
+            <h1>Consultar Unidades</h1>
+            
         <form method="GET" action="ServletListarUnidade">
-            <button class="btn btn-primary" type="submit" id="btnListarFornecedores" value="Atualizar">Atualizar</button>
+            <button class="btn btn-primary" type="submit" id="btnListarFornecedores" value="Atualizar">Atualizar</button><br><br>
         </form>
         
-        <form method="GET" action="ServletConsultarUnidade">
-            <input class="form-control" placeholder="Unidade" type="text" name="txtUnidadeNome">
-            <button class="btn btn-primary" type="submit" id="btnConsultarUnidades" value="Buscar">Buscar</button>
+        <form method="GET" action="ServletConsultarUnidade" class="form-inline">
+            <input style="width: 300px;" class="form-control" placeholder="Unidade" type="text" name="txtUnidadeNome">
+            <button class="btn btn-primary" type="submit" id="btnConsultarUnidades" value="Buscar">Buscar</button><br><br>
         </form>
         
 
@@ -54,19 +58,19 @@
         </table>
         
         <div class="container">
-            <form method="GET" action="ServletListarEnderecoUnidade">
-                <input class="form-control" placeholder="Nome da Unidade" type="text" value="${unidade.getUnidadeNome()}" name="txtUnidadeNome" id="txtUnidadeNome"><br>
-                <input class="form-control" placeholder="Telefone" type="text" value="${unidade.getContato().getContatoTelefone()}" name="txtUnidadeContatoTelefone" id="txtUnidadeContatoTelefone"><br>
-                <input class="form-control" placeholder="Outro Telefone" type="text" value="${unidade.getContato().getContatoTelefoneAlternativo()}" name="txtUnidadeContatoTelefoneAlternativo" id="txtUnidadeContatoTelefoneAlternativo"><br>
-                <input class="form-control" placeholder="Celular" type="text" value="${unidade.getContato().getContatoCelular()}" name="txtUnidadeContatoCelular" id="txtUnidadeContatoCelular"><br>
-                <input class="form-control" placeholder="E-mail" type="text" value="${unidade.getContato().getContatoEmail()}" name="txtUnidadeContatoEmail" id="txtUnidadeContatoEmail"><br>
-                <input class="form-control" placeholder="Número" type="text" value="${unidade.getUnidadeNumeroLogradouro()}" name="txtUnidadeNumeroLogradouro" id="txtUnidadeNumeroLogradouro"><br>
-                <input class="form-control" placeholder="CEP" type="text" value="${logradouro.getLogradouroCep()}" name="txtUnidadeLogradouroCep" id="txtUnidadeLogradouroCep"><br>
-                <button type="submit" class="btn btn-primary" id="btnValidar">Validar Cep</button><br>
-                <input class="form-control" disabled="true" placeholder="Logradouro" type="text" value="${logradouro.getLogradouroNome()}" id="txtUnidadeLogradouroNome" name="txtUnidadeLogradouroNome"><br>
-                <input class="form-control" disabled="true" placeholder="Bairro" type="text" value="${logradouro.getBairro().getBairroNome()}" id="txtUnidadeBairroNome" name="txtUnidadeBairroNome"><br>
-                <input class="form-control" disabled="true" placeholder="Cidade" type="text" value="${logradouro.getBairro().getCidade().getCidadeNome()}" id="txtUnidadeCidadeNome" name="txtUnidadeCidadeNome"><br>
-                <input class="form-control" disabled="true" placeholder="Estado" type="text" value="${logradouro.getBairro().getCidade().getEstado().getEstadoNome()}"  id="txtUnidadeEstadoNome" name="txtUnidadeEstadoNome"><br>
+            <form method="GET" action="ServletListarEnderecoUnidade" class="form-inline">
+                <input style="width: 300px;" class="form-control" placeholder="Nome da Unidade" type="text" value="${unidade.getUnidadeNome()}" name="txtUnidadeNome" id="txtUnidadeNome">
+                <input style="width: 300px;" class="form-control" placeholder="Telefone" type="text" value="${unidade.getContato().getContatoTelefone()}" name="txtUnidadeContatoTelefone" id="txtUnidadeContatoTelefone"><br><br>
+                <input style="width: 300px;" class="form-control" placeholder="Outro Telefone" type="text" value="${unidade.getContato().getContatoTelefoneAlternativo()}" name="txtUnidadeContatoTelefoneAlternativo" id="txtUnidadeContatoTelefoneAlternativo">
+                <input style="width: 300px;" class="form-control" placeholder="Celular" type="text" value="${unidade.getContato().getContatoCelular()}" name="txtUnidadeContatoCelular" id="txtUnidadeContatoCelular"><br><br>
+                <input style="width: 300px;" class="form-control" placeholder="E-mail" type="text" value="${unidade.getContato().getContatoEmail()}" name="txtUnidadeContatoEmail" id="txtUnidadeContatoEmail">
+                <input style="width: 300px;" class="form-control" placeholder="Número" type="text" value="${unidade.getUnidadeNumeroLogradouro()}" name="txtUnidadeNumeroLogradouro" id="txtUnidadeNumeroLogradouro"><br><br>
+                <input style="width: 300px;" class="form-control" placeholder="CEP" type="text" value="${logradouro.getLogradouroCep()}" name="txtUnidadeLogradouroCep" id="txtUnidadeLogradouroCep">
+                <button type="submit" class="btn btn-primary" id="btnValidar">Validar Cep</button><br><br>
+                <input style="width: 300px;" class="form-control" disabled="true" placeholder="Logradouro" type="text" value="${logradouro.getLogradouroNome()}" id="txtUnidadeLogradouroNome" name="txtUnidadeLogradouroNome">
+                <input style="width: 300px;" class="form-control" disabled="true" placeholder="Bairro" type="text" value="${logradouro.getBairro().getBairroNome()}" id="txtUnidadeBairroNome" name="txtUnidadeBairroNome"><br><br>
+                <input style="width: 300px;" class="form-control" disabled="true" placeholder="Cidade" type="text" value="${logradouro.getBairro().getCidade().getCidadeNome()}" id="txtUnidadeCidadeNome" name="txtUnidadeCidadeNome">
+                <input style="width: 300px;" class="form-control" disabled="true" placeholder="Estado" type="text" value="${logradouro.getBairro().getCidade().getEstado().getEstadoNome()}"  id="txtUnidadeEstadoNome" name="txtUnidadeEstadoNome"><br><br>
                 <input hidden="true" type="text" value="ServletListarUnidade" name="pagina">
                 <input hidden="true" type="text" value="${unidade.getUnidadeCodigo()}" id="codigoUnidade" name="codigoUnidade">
                 <input hidden="true" type="text" value="${unidade.getContato().getContatoCodigo()}" id="codigoContato" name="codigoContato">
@@ -75,9 +79,28 @@
                 
             </form>
                 <button onclick="alterarUnidade()" class="btn btn-primary" id="btnAlterar">Alterar</button>
+                <input type="button" onclick="limparCampos()" class="btn btn-primary" id="btnLimpar" value="Limpar">
         </div>   
         
         <script>
+            
+            function limparCampos()
+            {
+                document.getElementById("codigoLogradouro").value = "";
+                document.getElementById("codigoContato").value = "";
+                document.getElementById("codigoUnidade").value = "";
+                document.getElementById("txtUnidadeNome").value = "";
+                document.getElementById("txtUnidadeContatoTelefone").value = "";
+                document.getElementById("txtUnidadeContatoTelefoneAlternativo").value = "";
+                document.getElementById("txtUnidadeContatoCelular").value = "";
+                document.getElementById("txtUnidadeContatoEmail").value = "";
+                document.getElementById("txtUnidadeNumeroLogradouro").value = "";
+                document.getElementById("txtUnidadeLogradouroCep").value = "";
+                document.getElementById("txtUnidadeLogradouroNome").value = "";
+                document.getElementById("txtUnidadeBairroNome").value = "";
+                document.getElementById("txtUnidadeCidadeNome").value = "";
+                document.getElementById("txtUnidadeEstadoNome").value = "";
+            }
             
             function excluirUnidade(paramCodigoUnidade, paramCodigoContato)
             {
@@ -127,6 +150,6 @@
         </script>
         
         
-        
+        </div>
     </body>
 </html>
