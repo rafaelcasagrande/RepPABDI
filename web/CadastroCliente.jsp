@@ -45,19 +45,44 @@
                 var pessoaNumeroLogradouro = document.getElementById("txtPessoaNumeroLogradouro").value;
                 var pessoaLogradouro = document.getElementById("txtPessoaLogradouro").value;
                 
-                $.get('ServletCadastrarPessoa',{nomePessoa:nomePessoa, sobrenomePessoa:sobrenomePessoa, cpfPessoa:cpfPessoa, pessoaDataNascimento:pessoaDataNascimento, 
-                    telefonePessoa:telefonePessoa, telefoneAlternativoPessoa:telefoneAlternativoPessoa, celularPessoa:celularPessoa, emailPessoa:emailPessoa,
-                    pessoaNumeroLogradouro:pessoaNumeroLogradouro, pessoaLogradouro:pessoaLogradouro,
-                    tipoCadastro:'cliente'},function(){
-                    window.location.reload(true);
-                });
+                if((nomePessoa || sobrenomePessoa || cpfPessoa || pessoaDataNascimento || telefonePessoa || telefoneAlternativoPessoa || celularPessoa || emailPessoa || pessoaNumeroLogradouro || pessoaLogradouro) === "")
+                {
+                    alert("Preenchimento obrigatório");
+                }
+                else
+                {
+                
+                
+                    $.get('ServletCadastrarPessoa',{nomePessoa:nomePessoa, sobrenomePessoa:sobrenomePessoa, cpfPessoa:cpfPessoa, pessoaDataNascimento:pessoaDataNascimento, 
+                        telefonePessoa:telefonePessoa, telefoneAlternativoPessoa:telefoneAlternativoPessoa, celularPessoa:celularPessoa, emailPessoa:emailPessoa,
+                        pessoaNumeroLogradouro:pessoaNumeroLogradouro, pessoaLogradouro:pessoaLogradouro,
+                        tipoCadastro:'cliente'}, function(){
+                        
+                        alert("Cadastro Realizado com Sucesso.");
+                        
+                        });
+                }
             }
+            
+            function validarCampo(frm)
+            {
+                var cep = document.getElementById("txtPessoaLogradouroCep").value;
+                
+                if(cep === "")
+                {
+                    alert("Informe o CEP");
+                    return false;
+                }
+                else
+                    frm.submit();
+            }
+            
         </script>
         
         
         <div align="center">
             <h1> Cadastrar Cliente </h1>   
-            <form role="form" method="GET" action="ServletListarEnderecoCliente" class="form-inline">
+            <form role="form" method="GET" action="ServletListarEnderecoCliente" class="form-inline" onsubmit="validarCampo(this); return false;">
                 <input style="width: 300px;" class="form-control" placeholder="Nome do Cliente" value="${cliente.getPessoa().getPessoaNome()}" type="text" id="txtPessoaNome" name="txtPessoaNome"> 
                 <input style="width: 300px;" class="form-control" placeholder="Sobrenome" value="${cliente.getPessoa().getPessoaSobrenome()}" type="text" id="txtPessoaSobrenome" name="txtPessoaSobrenome"><br><br>
                 <input style="width: 300px;" class="form-control" placeholder="CPF" value="${cliente.getPessoa().getPessoaCpf()}" type="text" id="txtPessoaCpf" name="txtPessoaCpf">
@@ -76,7 +101,7 @@
                 <input hidden="true" type="text" value="${cliente.getPessoa().getLogradouro().getLogradouroCodigo()}" name="txtPessoaLogradouro" id="txtPessoaLogradouro">
                 <input hidden="true" type="text" value="CadastroCliente.jsp" name="pagina">
              </form>
-                
+                 
              <button onclick="cadastrarCliente()" class="btn btn-primary" id="btnValidar">Cadastrar</button>
              <input type="button" onclick="limparCampos()" class="btn btn-primary" value="Limpar" id="btnLimpar">
         </div>

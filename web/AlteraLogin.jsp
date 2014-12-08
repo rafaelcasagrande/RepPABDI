@@ -19,6 +19,16 @@
                 <input style="width: 300px;" class="form-control" placeholder="Login atual" value="" type="text" id="txtLoginAtual" name="txtLoginAtual"><br>
                 <input style="width: 300px;" class="form-control" placeholder="Novo login" value="" type="text" id="txtNovoLogin" name="txtNovoLogin"><br>
                 <input style="width: 300px;" class="form-control" placeholder="Confirma novo login" value="" type="text" id="txtConfirmaNovoLogin" name="txtConfirmaNovoLogin"><br>
+                
+                <c:if test="${mensagem != null}">
+                    <c:if test="${mensagem == true}">
+                        <div style="width: 300px;" class="alert alert-success">Username alterado com sucesso</div>
+                    </c:if>
+                    <c:if test="${mensagem == false}">
+                        <div style="width: 300px;" class="alert alert-danger">Falha ao alterar</div>
+                    </c:if>
+                </c:if> 
+                
                 <button onclick="validarCampos()" class="btn btn-primary" id="btnAlterar">Alterar</button>
                 <input type="button" onclick="limparCampos()" class="btn btn-primary" value="Limpar" id="btnLimpar">
             </form>

@@ -8,6 +8,7 @@ import POJO.Produto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -56,5 +57,12 @@ public class ServletCadastrarProduto extends HttpServlet {
         boolean resultado = false;
         
         resultado = produtoDao.adicionarProduto(produto);
+        
+        request.setAttribute("mensagem", resultado);
+        
+        RequestDispatcher rs = request.getRequestDispatcher("CadastroProduto.jsp");
+        
+        rs.forward(request, response);
+        
     }
 }

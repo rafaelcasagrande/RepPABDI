@@ -4,6 +4,7 @@
     Author     : rafael
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,6 +18,16 @@
                 <h1>Cadastrar Cargo</h1>
                 <input style="width: 300px;" type="text" class="form-control" placeholder="Cargo" id="txtCargoNome" name="txtCargoNome"><br>
                 <input style="width: 300px;" type="text" class="form-control" placeholder="Salário" id="txtCargoSalario" name="txtCargoSalario"><br>
+                
+                <c:if test="${mensagem != null}">
+                    <c:if test="${mensagem == true}">
+                        <div style="width: 300px;" class="alert alert-success">Cadastro realizado com sucesso</div>
+                    </c:if>
+                    <c:if test="${mensagem == false}">
+                        <div style="width: 300px;" class="alert alert-danger">Falha ao cadastrar</div>
+                    </c:if>
+                </c:if>
+                
                 <button type="submit" class="btn btn-primary" id="btnCadastrar">Cadastrar</button>
                 <input type="button" onclick="limparCampos()" class="btn btn-primary" id="btnLimpar" value="Limpar">
             </form>

@@ -30,6 +30,8 @@ public class ServletCadastrarMarca extends HttpServlet {
         
         resultado = marcaDao.adicionarMarca(marca);
 
+        request.setAttribute("mensagem", resultado);
+        
         RequestDispatcher rs = request.getRequestDispatcher("CadastroMarca.jsp");
 
         rs.forward(request, response);

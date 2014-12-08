@@ -57,9 +57,7 @@
                 var codigoCargo = document.getElementById("txtCargoCodigoAlterar").value;
                 var nomeCargo = document.getElementById("txtCargoNomeAlterar").value;
                 var salarioCargo = document.getElementById("txtCargoSalarioAlterar").value;
-                
-                alert(codigoCargo + nomeCargo + salarioCargo + 'alterar');
-                
+
                 $.get('ServletManipularCargo',{codigoCargo:codigoCargo, nomeCargo:nomeCargo, salarioCargo:salarioCargo, acao:'alterar'}, function() {
                     window.location.reload(true);
                 });  
@@ -75,8 +73,6 @@
             
             function excluirCargo(ParametroCodigoCargo, ParametroNomeCargo)
             {
-                alert(ParametroCodigoCargo + ParametroNomeCargo + 'excluir');
-
                 $.get('ServletManipularCargo',{codigoCargo:ParametroCodigoCargo, acao:'excluir'}, function() {
                     window.location.reload(true);
                 });  

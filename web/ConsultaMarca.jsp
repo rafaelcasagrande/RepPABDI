@@ -58,8 +58,6 @@
             
             function excluirMarca(ParametroCodigoMarca, ParametroNomeMarca)
             {
-                alert(ParametroCodigoMarca + ParametroNomeMarca + 'excluir');
-
                 $.get('ServletManipularMarca',{codigoMarca:ParametroCodigoMarca, acao:'excluir'}, function() {
                     window.location.reload(true);
                 });  
@@ -69,8 +67,6 @@
             {
                 var codigoMarca = document.getElementById("txtCodigoAlterar").value;
                 var nomeMarca = document.getElementById("txtMarcaNomeAlterar").value;
-                
-                alert(codigoMarca + nomeMarca + 'alterar');
                 
                 $.get('ServletManipularMarca',{codigoMarca:codigoMarca, nomeMarca:nomeMarca, acao:'alterar'}, function() {
                     window.location.reload(true);

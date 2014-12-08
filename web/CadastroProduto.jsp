@@ -13,7 +13,7 @@
     <body>
         <div align="center">
             <h1> Cadastrar Produto </h1> 
-            <form role="form" action="ServletCadastrarProduto">
+            <form role="form" action="ServletCadastrarProduto" onsubmit="validarCampos(this); return false;">
              
                 <input style="width: 300px;" class="form-control" placeholder="Nome" type="text" name="txtProdutoNome" id="txtProdutoNome"><br>
                 <input style="width: 300px;" class="form-control" placeholder="Descrição" type="text" name="txtProdutoDescricao" id="txtProdutoDescricao"><br>
@@ -34,6 +34,17 @@
                     </c:forEach>
                 </select>
                 <br><br>
+                
+                 <c:if test="${mensagem != null}">
+                    <c:if test="${mensagem == true}">
+                        <div style="width: 300px;" class="alert alert-success">Cadastro realizado com sucesso</div>
+                    </c:if>
+                    <c:if test="${mensagem == false}">
+                        <div style="width: 300px;" class="alert alert-danger">Falha ao cadastrar</div>
+                    </c:if>
+                </c:if>  
+                
+                
                 <button type="submit" class="btn btn-primary" id="btnCadastrar">Cadastrar</button> 
                 <input type="button" onclick="limparCampos()" class="btn btn-primary" value="Limpar" id="btnLimpar">
             </form>
@@ -48,6 +59,23 @@
                 document.getElementById("txtProdutoQuantidade").value = "";
                 document.getElementById("txtProdutoPreco").value = "";
             }
+            
+            function validarCampos(frm)
+            {
+                var produto = document.getElementById("txtProdutoNome").value;
+                var descricao = document.getElementById("txtProdutoDescricao").value;
+                var quantidade = document.getElementById("txtProdutoQuantidade").value;
+                var preco = document.getElementById("txtProdutoPreco").value;
+                
+                if((produto || descricao || quantidade || preco) === "")
+                {
+                    alert("Preenchimento obrigatório");
+                    return false;
+                }
+                else
+                    frm.submit();
+            }
+            
         </script>
         
     </body>

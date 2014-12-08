@@ -13,7 +13,7 @@
     <body> 
         <div align="center">
             <h1> Cadastrar Fornecedor </h1> 
-            <form method="GET" action="ServletListarEndereco" class="form-inline">
+            <form method="GET" action="ServletListarEndereco" class="form-inline" onsubmit="validarCampo(this); return false;">
                 <input style="width: 300px;" class="form-control" placeholder="Nome do Fornecedor" type="text" value="${fornecedor.getFornecedorNome()}" id="txtFornecedorNome" name="txtFornecedorNome">
                 <input style="width: 300px;" class="form-control" placeholder="CNPJ" type="text" value="${fornecedor.getFornecedorCnpj()}" id="txtFornecedorCnpj" name="txtFornecedorCnpj"><br><br>
                 <input style="width: 300px;" class="form-control" placeholder="Telefone" type="text" value="${fornecedor.getContato().getContatoTelefone()}" id="txtFornecedorTelefone" name="txtFornecedorTelefone">
@@ -49,9 +49,16 @@
                     var numeroFornecedor = document.getElementById("txtFornecedorNumeroLogradouro").value;
                     var codigoLogradouro = document.getElementById("codigoLogradouro").value;
                     
-                    $.get('ServletCadastrarFornecedor',{nomeFornecedor:nomeFornecedor, cnpjFornecedor:cnpjFornecedor, telefoneFornecedor:telefoneFornecedor, telefoneAltFornecedor:telefoneAltFornecedor, celularFornecedor:celularFornecedor, emailFornecedor:emailFornecedor, numeroFornecedor:numeroFornecedor, codigoLogradouro:codigoLogradouro}, function(){
-                        window.location.reload(true);
-                    });
+                    if((nomeFornecedor || cnpjFornecedor || telefoneFornecedor || telefoneAltFornecedor || celularFornecedor || emailFornecedor || numeroFornecedor || codigoLogradouro) === "")
+                    {
+                        alert("Preenchimento obrigatório");
+                    }
+                    else
+                    {
+                        $.get('ServletCadastrarFornecedor',{nomeFornecedor:nomeFornecedor, cnpjFornecedor:cnpjFornecedor, telefoneFornecedor:telefoneFornecedor, telefoneAltFornecedor:telefoneAltFornecedor, celularFornecedor:celularFornecedor, emailFornecedor:emailFornecedor, numeroFornecedor:numeroFornecedor, codigoLogradouro:codigoLogradouro}, function(){
+                            alert("Cadastro Realizado com Sucesso.");
+                        });
+                    }
                     
                 }
                 
@@ -71,6 +78,20 @@
                     document.getElementById("txtFornecedorLogradouroCep").value = "";
                 }
 
+                function validarCampo(frm)
+                {
+                    var cep = document.getElementById("txtFornecedorLogradouroCep").value;
+
+                    if(cep === "")
+                    {
+                        alert("Informe o CEP");
+                        return false;
+                    }
+                    else
+                        frm.submit();
+                }
+
+                
             </script>
             
             

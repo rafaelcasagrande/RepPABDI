@@ -58,7 +58,7 @@
         </table>
         
         <div class="container">
-            <form method="GET" action="ServletListarEnderecoUnidade" class="form-inline">
+            <form method="GET" action="ServletListarEnderecoUnidade" class="form-inline" class="form-inline" onsubmit="validarCampo(this); return false;">
                 <input style="width: 300px;" class="form-control" placeholder="Nome da Unidade" type="text" value="${unidade.getUnidadeNome()}" name="txtUnidadeNome" id="txtUnidadeNome">
                 <input style="width: 300px;" class="form-control" placeholder="Telefone" type="text" value="${unidade.getContato().getContatoTelefone()}" name="txtUnidadeContatoTelefone" id="txtUnidadeContatoTelefone"><br><br>
                 <input style="width: 300px;" class="form-control" placeholder="Outro Telefone" type="text" value="${unidade.getContato().getContatoTelefoneAlternativo()}" name="txtUnidadeContatoTelefoneAlternativo" id="txtUnidadeContatoTelefoneAlternativo">
@@ -83,6 +83,19 @@
         </div>   
         
         <script>
+            
+            function validarCampo(frm)
+            {
+                var cep = document.getElementById("txtUnidadeLogradouroCep").value;
+
+                if(cep === "")
+                {
+                    alert("Informe o CEP");
+                    return false;
+                }
+                else
+                    frm.submit();
+            }
             
             function limparCampos()
             {

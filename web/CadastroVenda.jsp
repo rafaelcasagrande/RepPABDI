@@ -135,7 +135,7 @@
                 var codigoCliente = document.getElementById("txtCodigoCliente").value;
                 
                 $.get('ServletCadastrarVenda',{codigoCliente:codigoCliente, codigosProdutos:codigosProdutos, quantidadeProdutos:quantidadeProdutos, formaPagamento:formaPagamento, valorTotal:valorTotal}, function() {
-                    window.location.reload(true);
+                    alert("Cadastro Realizado com Sucesso.");
                 }); 
     
     }

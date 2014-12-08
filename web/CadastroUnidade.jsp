@@ -13,7 +13,7 @@
     <body>
         <div align="center">
             <h1> Cadastrar Unidade </h1> 
-            <form role="form" method="GET" action="ServletListarEnderecoUnidade" class="form-inline">
+            <form role="form" method="GET" action="ServletListarEnderecoUnidade" class="form-inline" onsubmit="validarCampo(this); return false;">
              
                 <input style="width: 300px;" class="form-control" placeholder="Nome da Unidade" type="text" value="${unidade.getUnidadeNome()}" name="txtUnidadeNome" id="txtUnidadeNome">
                 <input style="width: 300px;" class="form-control" placeholder="Telefone" type="text" value="${unidade.getContato().getContatoTelefone()}" name="txtUnidadeContatoTelefone" id="txtUnidadeContatoTelefone"><br><br>
@@ -48,9 +48,16 @@
             var numeroUnidade = document.getElementById("txtUnidadeNumeroLogradouro").value;
             var codigoLogradouro = document.getElementById("codigoLogradouro").value;
 
-            $.get('ServletCadastrarUnidade',{nomeUnidade:nomeUnidade, telefoneUnidade:telefoneUnidade, telefoneAltUnidade:telefoneAltUnidade, celularUnidade:celularUnidade, emailUnidade:emailUnidade, numeroUnidade:numeroUnidade, codigoLogradouro:codigoLogradouro}, function(){
-                window.location.reload(true);
-            });
+            if((nomeUnidade || telefoneUnidade || telefoneAltUnidade || celularUnidade || emailUnidade || numeroUnidade) === "")
+            {
+                alert("Preenchimento obrigatório");
+            }
+            else
+            {
+                $.get('ServletCadastrarUnidade',{nomeUnidade:nomeUnidade, telefoneUnidade:telefoneUnidade, telefoneAltUnidade:telefoneAltUnidade, celularUnidade:celularUnidade, emailUnidade:emailUnidade, numeroUnidade:numeroUnidade, codigoLogradouro:codigoLogradouro}, function(){
+                    alert("Cadastro Realizado com Sucesso.");
+                });
+            }
 
         }
         
@@ -64,6 +71,19 @@
             document.getElementById("txtUnidadeContatoEmail").value = "";
             document.getElementById("txtUnidadeNumeroLogradouro").value = "";
             document.getElementById("txtUnidadeLogradouroCep").value = "";
+        }
+        
+        function validarCampo(frm)
+        {
+            var cep = document.getElementById("txtUnidadeLogradouroCep").value;
+
+            if(cep === "")
+            {
+                alert("Informe o CEP");
+                return false;
+            }
+            else
+                frm.submit();
         }
         
         </script>

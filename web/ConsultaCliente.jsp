@@ -68,7 +68,7 @@
         </table>
         
         
-        <form role="form" method="GET" action="ServletListarEnderecoCliente" class="form-inline">
+        <form role="form" method="GET" action="ServletListarEnderecoCliente" class="form-inline" onsubmit="validarCampo(this); return false;">
                 <input style="width: 300px;" class="form-control" placeholder="Nome do Cliente" value="${cliente.getPessoa().getPessoaNome()}" type="text" id="txtPessoaNome" name="txtPessoaNome">
                 <input style="width: 300px;" class="form-control" placeholder="Sobrenome" value="${cliente.getPessoa().getPessoaSobrenome()}" type="text" id="txtPessoaSobrenome" name="txtPessoaSobrenome"><br><br>
                 <input style="width: 300px;" class="form-control" placeholder="CPF" value="${cliente.getPessoa().getPessoaCpf()}" type="text" id="txtPessoaCpf" name="txtPessoaCpf">
@@ -100,6 +100,20 @@
         </div>   
         
         <script>
+            
+            function validarCampo(frm)
+            {
+                var cep = document.getElementById("txtPessoaLogradouroCep").value;
+                
+                if(cep === "")
+                {
+                    alert("Informe o CEP");
+                    return false;
+                }
+                else
+                    frm.submit();
+            }
+            
             
             function limparCampos()
             {

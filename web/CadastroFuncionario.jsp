@@ -13,7 +13,7 @@
     <body>
         <div align="center">
             <h1> Cadastrar Funcionário </h1>
-                <form method="GET" action="ServletListarEnderecoPessoa" class="form-inline">
+                <form method="GET" action="ServletListarEnderecoPessoa" class="form-inline" onsubmit="validarCampo(this); return false;">
                 <input style="width: 300px;" class="form-control" placeholder="Nome do Funcionário" value="${funcionario.getPessoa().getPessoaNome()}" type="text" id="txtPessoaNome" name="txtPessoaNome">
                 <input style="width: 300px;" class="form-control" placeholder="Sobrenome" value="${funcionario.getPessoa().getPessoaSobrenome()}" type="text" id="txtPessoaSobrenome" name="txtPessoaSobrenome"><br><br>
                 <input style="width: 300px;" class="form-control" placeholder="CPF" value="${funcionario.getPessoa().getPessoaCpf()}" type="text" id="txtPessoaCpf" name="txtPessoaCpf">
@@ -49,6 +49,17 @@
                 
              </form>
              <br><br>   
+             
+             <c:if test="${mensagem != null}">
+                    <c:if test="${mensagem == true}">
+                        <div style="width: 300px;" class="alert alert-success">Cadastro realizado com sucesso</div>
+                    </c:if>
+                    <c:if test="${mensagem == false}">
+                        <div style="width: 300px;" class="alert alert-danger">Falha ao cadastrar</div>
+                    </c:if>
+            </c:if>  
+             
+             
              <button onclick="cadastrarFuncionario()" class="btn btn-primary" id="btnValidar">Cadastrar</button>
              <input type="button" onclick="limparCampos()" class="btn btn-primary" value="Limpar" id="btnLimpar">
         </div>
@@ -71,12 +82,21 @@
                 var funcionarioCargo = document.getElementById("cbxFuncionarioCargo").value;
                 var funcionarioUnidade = document.getElementById("cbxFuncionarioUnidade").value;
                 
-                $.get('ServletCadastrarPessoa',{nomePessoa:nomePessoa, sobrenomePessoa:sobrenomePessoa, cpfPessoa:cpfPessoa, pessoaDataNascimento:pessoaDataNascimento, 
-                    telefonePessoa:telefonePessoa, telefoneAlternativoPessoa:telefoneAlternativoPessoa, celularPessoa:celularPessoa, emailPessoa:emailPessoa,
-                    funcionarioDataAdmissao:funcionarioDataAdmissao, pessoaNumeroLogradouro:pessoaNumeroLogradouro, pessoaLogradouro:pessoaLogradouro, funcionarioCargo:funcionarioCargo,
-                    funcionarioUnidade:funcionarioUnidade, tipoCadastro:'funcionario'},function(){
-                    window.location.reload(true);
-                });
+                
+                if((nomePessoa || sobrenomePessoa || cpfPessoa || pessoaDataNascimento || telefonePessoa || telefoneAlternativoPessoa || celularPessoa || emailPessoa || funcionarioDataAdmissao || pessoaNumeroLogradouro || pessoaLogradouro) === "")
+                {
+                        alert("Preenchimento obrigatório");
+                }
+                else
+                {
+                
+                    $.get('ServletCadastrarPessoa',{nomePessoa:nomePessoa, sobrenomePessoa:sobrenomePessoa, cpfPessoa:cpfPessoa, pessoaDataNascimento:pessoaDataNascimento, 
+                        telefonePessoa:telefonePessoa, telefoneAlternativoPessoa:telefoneAlternativoPessoa, celularPessoa:celularPessoa, emailPessoa:emailPessoa,
+                        funcionarioDataAdmissao:funcionarioDataAdmissao, pessoaNumeroLogradouro:pessoaNumeroLogradouro, pessoaLogradouro:pessoaLogradouro, funcionarioCargo:funcionarioCargo,
+                        funcionarioUnidade:funcionarioUnidade, tipoCadastro:'funcionario'},function(){
+                        alert("Cadastro Realizado com Sucesso.");
+                    });
+                }
             }
             
             function limparCampos()
@@ -96,6 +116,21 @@
                 document.getElementById("txtPessoaCidadeNome").value = "";
                 document.getElementById("txtPessoaEstadoNome").value = "";
             }
+            
+            
+            function validarCampo(frm)
+                {
+                    var cep = document.getElementById("txtPessoaLogradouroCep").value;
+
+                    if(cep === "")
+                    {
+                        alert("Informe o CEP");
+                        return false;
+                    }
+                    else
+                        frm.submit();
+                }
+            
         </script>
     </body>
 </html>

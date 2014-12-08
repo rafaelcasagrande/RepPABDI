@@ -26,21 +26,33 @@ public class ServletCadastrarCargo extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        BigDecimal salario = null;
-        String cargoNome = "";
         boolean resultado = false;
-        CargoDAO cargoDao = new CargoDAO();
-        Cargo cargo = new Cargo();
         
-        salario =  BigDecimal.valueOf(Double.parseDouble(request.getParameter("txtCargoSalario").replace(',', '.')));
-        
-        cargoNome = request.getParameter("txtCargoNome");
+        try
+        {
+            BigDecimal salario = null;
+            String cargoNome = "";
 
-        cargo.setCargoNome(cargoNome);
-        
-        cargo.setCargoSalario(salario);
+            CargoDAO cargoDao = new CargoDAO();
+            Cargo cargo = new Cargo();
 
-        resultado = cargoDao.adicionarCargo(cargo);
+            salario =  BigDecimal.valueOf(Double.parseDouble(request.getParameter("txtCargoSalario").replace(',', '.')));
+
+            cargoNome = request.getParameter("txtCargoNome");
+
+            cargo.setCargoNome(cargoNome);
+
+            cargo.setCargoSalario(salario);
+
+            resultado = cargoDao.adicionarCargo(cargo);
+        }
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        
+        
+        request.setAttribute("mensagem", resultado);
         
         RequestDispatcher rd = request.getRequestDispatcher("CadastroCargo.jsp");
         

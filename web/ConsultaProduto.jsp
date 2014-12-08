@@ -106,7 +106,6 @@
         
         function excluirProduto(paramProdutoCodigo, paramProdutoNome)
         {
-            alert("Excluir Produto " + paramProdutoCodigo + paramProdutoNome);
             $.get('ServletManipularProduto', {codigoProduto:paramProdutoCodigo, acao:'excluir'}, function(){
                 window.location.reload(true);    
             }); 

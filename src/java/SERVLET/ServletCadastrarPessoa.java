@@ -23,6 +23,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -109,6 +110,13 @@ public class ServletCadastrarPessoa extends HttpServlet {
             
             FuncionarioDAO funcionarioDao = new FuncionarioDAO();
             resultado = funcionarioDao.adicionarPessoa(funcionario);
+            
+            request.setAttribute("mensagem", resultado);
+            
+            RequestDispatcher rs = request.getRequestDispatcher("ServletIniciarCadastroFuncionario");
+            
+            rs.forward(request, response);
+            
         }
         else
         {
@@ -121,6 +129,16 @@ public class ServletCadastrarPessoa extends HttpServlet {
             
             ClienteDAO clienteDAO = new ClienteDAO();
             resultado = clienteDAO.adicionarPessoa(cliente);
+            
+    
+            request.setAttribute("mensagem", resultado);
+        
+            RequestDispatcher rd = request.getRequestDispatcher("CadastroCliente.jsp");
+
+            rd.forward(request, response);
+
         }
+        
+      
     }
 }

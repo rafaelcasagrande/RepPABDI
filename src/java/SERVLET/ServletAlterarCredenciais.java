@@ -8,6 +8,7 @@ package SERVLET;
 import DAO.LoginDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -34,6 +35,14 @@ public class ServletAlterarCredenciais extends HttpServlet {
 
             LoginDAO loginDao = new LoginDAO();
             resultado = loginDao.alterarLogin(loginAtual, novoLogin); 
+            
+            request.setAttribute("mensagem", resultado);
+            
+            RequestDispatcher rs = request.getRequestDispatcher("AlteraLogin.jsp");
+            
+            rs.forward(request, response);
+            
+            
         }
         else
         {
@@ -43,6 +52,13 @@ public class ServletAlterarCredenciais extends HttpServlet {
 
             LoginDAO loginDao = new LoginDAO();
             resultado = loginDao.alterarSenha(login, senhaAtual, novaSenha); 
+            
+            request.setAttribute("mensagem", resultado);
+            
+            RequestDispatcher rs = request.getRequestDispatcher("AlteraSenha.jsp");
+            
+            rs.forward(request, response);
+            
         }
         
     }

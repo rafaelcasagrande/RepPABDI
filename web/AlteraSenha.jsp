@@ -17,6 +17,16 @@
             <input style="width: 300px;" class="form-control" type="password" placeholder="Senha atual" value="" type="text" id="txtSenhaAtual" name="txtSenhaAtual"><br>
             <input style="width: 300px;" class="form-control" type="password" placeholder="Nova senha" value="" type="text" id="txtNovaSenha" name="txtNovaSenha"><br>
             <input style="width: 300px;" class="form-control" type="password" placeholder="Confirma nova senha" value="" type="text" id="txtConfirmaNovaSenha" name="txtConfirmaNovaSenha"><br>
+            
+            <c:if test="${mensagem != null}">
+                    <c:if test="${mensagem == true}">
+                        <div style="width: 300px;" class="alert alert-success">Senha alterada com sucesso</div>
+                    </c:if>
+                    <c:if test="${mensagem == false}">
+                        <div style="width: 300px;" class="alert alert-danger">Falha ao alterar</div>
+                    </c:if>
+                </c:if> 
+            
             <button onclick="validarCampos()" class="btn btn-primary" id="btnAlterar">Alterar</button>
             <input type="button" onclick="limparCampos()" class="btn btn-primary" value="Limpar" id="btnLimpar">
         </form>
